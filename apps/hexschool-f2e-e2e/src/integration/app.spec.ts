@@ -1,4 +1,4 @@
-import { getGreeting } from '../support/app.po';
+import { getGreeting, getResources } from '../support/app.po';
 
 describe('hexschool-f2e', () => {
   beforeEach(() => cy.visit('/'));
@@ -9,5 +9,11 @@ describe('hexschool-f2e', () => {
 
     // Function helper example, see `../support/app.po.ts` file
     getGreeting().contains('Welcome to hexschool-f2e!');
+  });
+
+  it('should display resources', () => {
+    getResources().should((t) => expect(t.length).equal(4));
+    // getAddTodoButton().click();
+    // getTodos().should((t) => expect(t.length).equal(3));
   });
 });
