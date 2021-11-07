@@ -1,3 +1,21 @@
 <div>
-  <div class="search-field"></div>
+  <!-- search 搜尋框 -->
+  <div class="search-field bg-primary p-2" *ngIf="showSearch">
+    <span class="p-input-icon-right w-full">
+      <i class="pi pi-search"></i>
+      <input type="text" pInputText [(ngModel)]="searchKeyword" class="w-full">
+    </span>
+  </div>
+  <!-- carousel 輪播 -->
+  <div class="carousel w-screen h-15rem">
+    <p-carousel [value]="carouselList" [autoplayInterval]="3000" [circular]="true" [showNavigators]="true" [showIndicators]="false">
+      <ng-template let-car pTemplate="item">
+        <div class="carousel-item w-screen h-15rem flex align-items-center justify-content-center" [ngStyle]="{'background-image': car.img_path}">
+          <div class="carousel-title text-6xl text-white font-normal">{{ car.title }}</div>
+        </div>
+      </ng-template>
+    </p-carousel>
+  </div>
+  <!-- tabview 頁籤 -->
+  
 </div>

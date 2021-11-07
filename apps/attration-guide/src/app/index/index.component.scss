@@ -1,0 +1,32 @@
+$icon-size: 2rem;
+
+.carousel {
+  ::ng-deep .p-carousel-prev {
+    position: absolute;
+    width: $icon-size;
+    height: $icon-size;
+    left: 12px;
+    color: #eaeaea;
+    z-index: 1001;
+    span {
+      font-size: $icon-size;
+    }
+  }
+  ::ng-deep .p-carousel-next {
+    position: absolute;
+    width: $icon-size;
+    height: $icon-size;
+    right: 12px;
+    color: #eaeaea;
+    z-index: 1001;
+    span {
+      font-size: $icon-size;
+    }
+  }
+}
+.carousel-item {
+  background-size: cover;
+}
+.carousel-title {
+  text-shadow: black 0.1em 0.1em 0.2em;
+}
