@@ -21,7 +21,14 @@
               "apps/attraction-guide/src/favicon.ico",
               "apps/attraction-guide/src/assets"
             ],
-            "styles": ["apps/attraction-guide/src/styles.scss"],
+            "styles": [
+              "node_modules/normalize.css/normalize.css",
+              "node_modules/primeicons/primeicons.css",
+              "node_modules/primeng/resources/themes/bootstrap4-light-blue/theme.css",
+              "node_modules/primeng/resources/primeng.min.css",
+              "node_modules/primeflex/primeflex.css",
+              "apps/attraction-guide/src/styles.scss"
+            ],
             "scripts": []
           },
           "configurations": {
