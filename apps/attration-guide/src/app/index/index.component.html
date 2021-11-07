@@ -17,5 +17,44 @@
     </p-carousel>
   </div>
   <!-- tabview 頁籤 -->
-  
+  <div class="tab-view">
+    <p-tabView>
+      <p-tabPanel header="景點">
+        <ng-template pTemplate="header">
+          <div class="flex justify-content-between align-items-center">
+            <span>景點</span>
+            <ic-icon class="ml-1 mt-1" [icon]="attractionIcon"></ic-icon>
+          </div>
+        </ng-template>
+        <hexschool-f2e-attraction></hexschool-f2e-attraction>
+      </p-tabPanel>
+      <p-tabPanel header="美食">
+        <ng-template pTemplate="header">
+          <div class="flex justify-content-between align-items-center">
+            <span>美食</span>
+            <ic-icon class="ml-1 mt-1" [icon]="foodIcon"></ic-icon>
+          </div>
+        </ng-template>
+        <hexschool-f2e-food></hexschool-f2e-food>
+      </p-tabPanel>
+      <p-tabPanel header="住宿">
+        <ng-template pTemplate="header">
+          <div class="flex justify-content-between align-items-center">
+            <span>住宿</span>
+            <ic-icon class="ml-1 mt-1" [icon]="hotelIcon"></ic-icon>
+          </div>
+        </ng-template>
+        <hexschool-f2e-hotel></hexschool-f2e-hotel>
+      </p-tabPanel>
+      <p-tabPanel header="交通">
+        <ng-template pTemplate="header">
+          <div class="flex justify-content-between align-items-center">
+            <span>交通</span>
+            <ic-icon class="ml-1 mt-1" [icon]="vehicleBusIcon"></ic-icon>
+          </div>
+        </ng-template>
+        <hexschool-f2e-vehicle></hexschool-f2e-vehicle>
+      </p-tabPanel>
+    </p-tabView>
+  </div>
 </div>

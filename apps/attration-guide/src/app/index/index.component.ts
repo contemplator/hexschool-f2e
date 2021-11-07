@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import vehicleBus from '@iconify/icons-fluent/vehicle-bus-16-filled';
+import attraction from '@iconify/icons-maki/attraction';
+import food from '@iconify/icons-fluent/food-16-filled';
+import hotel from '@iconify/icons-ic/baseline-hotel';
 
 class Carousel {
   title: string;
@@ -27,6 +31,10 @@ export class IndexComponent implements OnInit {
   showSearch = false;
   searchKeyword = '';
   carouselList: Carousel[] = [];
+  attractionIcon = attraction;
+  foodIcon = food;
+  hotelIcon = hotel;
+  vehicleBusIcon = vehicleBus;
 
   ngOnInit(): void {
     this.fetchData();

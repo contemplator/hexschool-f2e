@@ -30,3 +30,8 @@ $icon-size: 2rem;
 .carousel-title {
   text-shadow: black 0.1em 0.1em 0.2em;
 }
+.tab-view {
+  ::ng-deep .p-tabview .p-tabview-nav li {
+    flex: 1 1 auto;
+  }
+}

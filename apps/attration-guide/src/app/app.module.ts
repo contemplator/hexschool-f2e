@@ -10,19 +10,27 @@ import { IndexComponent } from './index/index.component';
 // primeng
 import { InputTextModule } from 'primeng/inputtext';
 import { CarouselModule } from 'primeng/carousel';
+import { TabViewModule } from 'primeng/tabview';
+import { IconModule } from '@visurel/iconify-angular';
+import { FoodComponent } from './index/food/food.component';
+import { HotelComponent } from './index/hotel/hotel.component';
+import { VehicleComponent } from './index/vehicle/vehicle.component';
+import { AttractionComponent } from './index/attraction/attraction.component';
 
 const routes: Route[] = [
   { path: '', component: IndexComponent }
 ];
 
 @NgModule({
-  declarations: [AppComponent, IndexComponent],
+  declarations: [AppComponent, IndexComponent, FoodComponent, HotelComponent, VehicleComponent, AttractionComponent],
   imports: [
     BrowserModule,
     RouterModule.forRoot(routes, { initialNavigation: 'enabledBlocking' }),
     FormsModule,
     InputTextModule,
-    CarouselModule
+    CarouselModule,
+    TabViewModule,
+    IconModule
   ],
   providers: [],
   bootstrap: [AppComponent],
