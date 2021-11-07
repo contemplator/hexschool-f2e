@@ -1,5 +1,5 @@
 module.exports = {
-  displayName: 'attration-guide',
+  displayName: 'attraction-guide',
   preset: '../../jest.preset.js',
   setupFilesAfterEnv: ['<rootDir>/src/test-setup.ts'],
   globals: {
@@ -8,7 +8,7 @@ module.exports = {
       stringifyContentPathRegex: '\\.(html|svg)$',
     },
   },
-  coverageDirectory: '../../coverage/apps/attration-guide',
+  coverageDirectory: '../../coverage/apps/attraction-guide',
   transform: {
     '^.+\\.(ts|js|html)$': 'jest-preset-angular',
   },
