@@ -9,7 +9,9 @@
       "architect": {
         "test": {
           "builder": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/attraction-dialog"],
+          "outputs": [
+            "coverage/libs/attraction-dialog"
+          ],
           "options": {
             "jestConfig": "libs/attraction-dialog/jest.config.js",
             "passWithNoTests": true
@@ -35,7 +37,9 @@
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
-          "outputs": ["{options.outputPath}"],
+          "outputs": [
+            "{options.outputPath}"
+          ],
           "options": {
             "outputPath": "dist/apps/attraction-guide",
             "index": "apps/attraction-guide/src/index.html",
@@ -63,7 +67,7 @@
                 {
                   "type": "initial",
                   "maximumWarning": "500kb",
-                  "maximumError": "1mb"
+                  "maximumError": "2mb"
                 },
                 {
                   "type": "anyComponentStyle",
@@ -119,7 +123,9 @@
         },
         "test": {
           "builder": "@nrwl/jest:jest",
-          "outputs": ["coverage/apps/attraction-guide"],
+          "outputs": [
+            "coverage/apps/attraction-guide"
+          ],
           "options": {
             "jestConfig": "apps/attraction-guide/jest.config.js",
             "passWithNoTests": true
@@ -147,14 +153,20 @@
         },
         "lint": {
           "builder": "@nrwl/linter:eslint",
-          "outputs": ["{options.outputFile}"],
+          "outputs": [
+            "{options.outputFile}"
+          ],
           "options": {
-            "lintFilePatterns": ["apps/attraction-guide-e2e/**/*.{js,ts}"]
+            "lintFilePatterns": [
+              "apps/attraction-guide-e2e/**/*.{js,ts}"
+            ]
           }
         }
       },
       "tags": [],
-      "implicitDependencies": ["attraction-guide"]
+      "implicitDependencies": [
+        "attraction-guide"
+      ]
     },
     "hexschool-f2e": {
       "projectType": "application",
@@ -164,7 +176,9 @@
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
-          "outputs": ["{options.outputPath}"],
+          "outputs": [
+            "{options.outputPath}"
+          ],
           "options": {
             "outputPath": "dist/apps/hexschool-f2e",
             "index": "apps/hexschool-f2e/src/index.html",
@@ -176,7 +190,9 @@
               "apps/hexschool-f2e/src/favicon.ico",
               "apps/hexschool-f2e/src/assets"
             ],
-            "styles": ["apps/hexschool-f2e/src/styles.scss"],
+            "styles": [
+              "apps/hexschool-f2e/src/styles.scss"
+            ],
             "scripts": []
           },
           "configurations": {
@@ -241,11 +257,17 @@
         },
         "test": {
           "builder": "@nrwl/jest:jest",
-          "outputs": ["coverage/apps/hexschool-f2e"],
+          "outputs": [
+            "coverage/apps/hexschool-f2e"
+          ],
           "options": {
             "jestConfig": "apps/hexschool-f2e/jest.config.js",
             "passWithNoTests": true
           }
+        },
+        "deploy": {
+          "builder": "angular-cli-ghpages:deploy",
+          "options": {}
         }
       },
       "tags": []
@@ -270,14 +292,20 @@
         },
         "lint": {
           "builder": "@nrwl/linter:eslint",
-          "outputs": ["{options.outputFile}"],
+          "outputs": [
+            "{options.outputFile}"
+          ],
           "options": {
-            "lintFilePatterns": ["apps/hexschool-f2e-e2e/**/*.{js,ts}"]
+            "lintFilePatterns": [
+              "apps/hexschool-f2e-e2e/**/*.{js,ts}"
+            ]
           }
         }
       },
       "tags": [],
-      "implicitDependencies": ["hexschool-f2e"]
+      "implicitDependencies": [
+        "hexschool-f2e"
+      ]
     },
     "viewmodel": {
       "projectType": "library",
@@ -287,7 +315,9 @@
       "architect": {
         "test": {
           "builder": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/viewmodel"],
+          "outputs": [
+            "coverage/libs/viewmodel"
+          ],
           "options": {
             "jestConfig": "libs/viewmodel/jest.config.js",
             "passWithNoTests": true
