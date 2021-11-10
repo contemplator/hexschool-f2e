@@ -1,0 +1,11 @@
+.attraction {
+  flex: 0 0 calc(50% - 3px);
+  width: calc(50% - 3px);
+  &:nth-child(2n + 1) {
+    margin-right: 6px;
+  }
+}
+
+.attraction-image {
+  background-size: cover;
+}

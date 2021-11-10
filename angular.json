@@ -1,6 +1,32 @@
 {
   "version": 1,
   "projects": {
+    "attraction-dialog": {
+      "projectType": "library",
+      "root": "libs/attraction-dialog",
+      "sourceRoot": "libs/attraction-dialog/src",
+      "prefix": "hexschool-f2e",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/attraction-dialog"],
+          "options": {
+            "jestConfig": "libs/attraction-dialog/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/attraction-dialog/src/**/*.ts",
+              "libs/attraction-dialog/src/**/*.html"
+            ]
+          }
+        }
+      },
+      "tags": []
+    },
     "attraction-guide": {
       "projectType": "application",
       "root": "apps/attraction-guide",
@@ -252,6 +278,32 @@
       },
       "tags": [],
       "implicitDependencies": ["hexschool-f2e"]
+    },
+    "viewmodel": {
+      "projectType": "library",
+      "root": "libs/viewmodel",
+      "sourceRoot": "libs/viewmodel/src",
+      "prefix": "hexschool-f2e",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/viewmodel"],
+          "options": {
+            "jestConfig": "libs/viewmodel/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/viewmodel/src/**/*.ts",
+              "libs/viewmodel/src/**/*.html"
+            ]
+          }
+        }
+      },
+      "tags": []
     }
   }
 }
