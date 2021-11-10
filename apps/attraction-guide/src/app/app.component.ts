@@ -7,4 +7,8 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'attration-guide';
+
+  onBackClick(): void {
+    window.history.go(-1);
+  }
 }

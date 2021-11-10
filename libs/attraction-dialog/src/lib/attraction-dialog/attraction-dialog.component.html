@@ -1,1 +1,26 @@
-<div class="dialog-container">attraction-dialog works!</div>
+<div class="dialog-container" *ngIf="display && attraction">
+  <div class="btn-close inline-flex justify-content-end align-items-center" (click)="onCloseClick($event)">
+    <div class="text-white">關閉</div>
+    <ic-icon [icon]="timesLineIcon" class="text-white w-1rem h-1rem"></ic-icon>
+  </div>
+  <div class="attraction-info p-2">
+    <img class="w-full" [src]="getAttractionImage()">
+    <div class="attraction-text-info flex justify-content-between">
+      <div class="attraction-basic">
+        <div class="attraction-name text-2xl line-height-2 my-2">{{ attraction.Name }}</div>
+        <div class="attraction-label w-full flex align-items-center my-2">
+          <ic-icon class="text-primary w-1rem h-1rem mr-1" [icon]="markerIcon"></ic-icon>
+          <div class="text-primary">{{ attraction.City }}</div>
+        </div>
+        <div class="attraction-more">
+          <button pButton [label]="'更多資訊'" class="btn-more p-button-outlined" (click)="onMoreClick()"></button>
+        </div>
+      </div>
+      <div class="attraction-stamp">
+        <img alt="stamp" src="./assets/stamps-03.png">
+      </div>
+    </div>
+
+  </div>
+</div>
+<p-blockUI [blocked]="display" [baseZIndex]="1005" [autoZIndex]="false"></p-blockUI>

@@ -21,13 +21,16 @@ import { DropdownModule } from 'primeng/dropdown';
 import { IconModule } from '@visurel/iconify-angular';
 // customer module
 import { AttractionDialogModule } from '../../../../libs/attraction-dialog/src/lib/attraction-dialog.module';
+import { AttractionInfoComponent } from './attraction-info/attraction-info.component';
 
 const routes: Route[] = [
-  { path: '', component: IndexComponent }
+  { path: '', component: IndexComponent },
+  { path: 'attraction-info/:id', component: AttractionInfoComponent },
+  { path: 'attraction-info', component: AttractionInfoComponent }
 ];
 
 @NgModule({
-  declarations: [AppComponent, IndexComponent, FoodComponent, HotelComponent, VehicleComponent, AttractionComponent],
+  declarations: [AppComponent, IndexComponent, FoodComponent, HotelComponent, VehicleComponent, AttractionComponent, AttractionInfoComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,

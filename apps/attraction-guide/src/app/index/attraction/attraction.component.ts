@@ -5,6 +5,7 @@ import { AppService } from '../../app.service';
 import { ScenicSpotTourismInfo, TourismPicture } from '../../../../../../libs/viewmodels';
 import { SafeUrl } from '@angular/platform-browser';
 import marker from '@iconify/icons-fontisto/map-marker-alt';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'hexschool-f2e-attraction',
@@ -20,9 +21,12 @@ export class AttractionComponent implements OnInit {
   hotSpot: string[] = [];
   attractions: ScenicSpotTourismInfo[] = [];
   markerIcon = marker;
+  showDialog = false;
+  showAttraction: ScenicSpotTourismInfo | null = null;
 
   constructor(
-    private service: AppService
+    private service: AppService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -40,12 +44,33 @@ export class AttractionComponent implements OnInit {
 
   searchAttractions(): void {
     this.service.searchCitySpot(this.selectedCity).subscribe(res => {
-      this.attractions = res;
-      console.log(this.attractions);
+      this.attractions = res.filter(item => item.Name.indexOf(this.searchKeyword) > -1);
     });
+  }
+
+  onAreaChange(): void {
+    this.cityOptions = AreaCityData.filter(item => item.AreaName === this.selectedArea)[0].CityList.map(item => new SelectItem(item.CityName, item.CityEngName));
+    this.selectedCity = this.cityOptions[0].value;
+    this.searchAttractions();
   }
 
   getAttractionImage(picture: TourismPicture): SafeUrl {
     return picture && picture.PictureUrl1 ? `url(${picture.PictureUrl1})` : '';
+  }
+
+  onAttractionClick(attraction: ScenicSpotTourismInfo): void {
+    this.showAttraction = attraction;
+    this.showDialog = true;
+    console.log(JSON.stringify(attraction));
+  }
+
+  onDialogClose(event: MouseEvent): void {
+    this.showAttraction = null;
+    this.showDialog = false;
+  }
+
+  onMoreClick(attraction: ScenicSpotTourismInfo | null): void {
+    this.service.attraction = attraction || this.service.attraction;
+    this.router.navigate(['attraction-info', attraction ? attraction.ID : 0]);
   }
 }

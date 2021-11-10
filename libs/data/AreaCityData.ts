@@ -25,7 +25,7 @@ export const AreaCityData = [
       },
       {
         "CityName": "新竹縣",
-        "CityEngName": "Hsinchu"
+        "CityEngName": "HsinchuCounty"
       },
       {
         "CityName": "桃園市",
@@ -39,7 +39,7 @@ export const AreaCityData = [
     "CityList": [
       {
         "CityName": "苗栗縣",
-        "CityEngName": "Miaoli"
+        "CityEngName": "MiaoliCounty"
       },
       {
         "CityName": "臺中市",
@@ -47,15 +47,15 @@ export const AreaCityData = [
       },
       {
         "CityName": "彰化縣",
-        "CityEngName": "Changhua"
+        "CityEngName": "ChanghuaCounty"
       },
       {
         "CityName": "南投縣",
-        "CityEngName": "Nantou"
+        "CityEngName": "NantouCounty"
       },
       {
         "CityName": "雲林縣",
-        "CityEngName": "Yunlin"
+        "CityEngName": "YunlinCounty"
       }
     ]
   },
@@ -69,7 +69,7 @@ export const AreaCityData = [
       },
       {
         "CityName": "嘉義縣",
-        "CityEngName": "Chiayi"
+        "CityEngName": "ChiayiCounty"
       },
       {
         "CityName": "臺南市",
@@ -81,7 +81,7 @@ export const AreaCityData = [
       },
       {
         "CityName": "屏東縣",
-        "CityEngName": "Pingtung"
+        "CityEngName": "PingtungCounty"
       }
     ]
   },
@@ -91,11 +91,11 @@ export const AreaCityData = [
     "CityList": [
       {
         "CityName": "臺東縣",
-        "CityEngName": "Taitung"
+        "CityEngName": "TaitungCounty"
       },
       {
         "CityName": "花蓮縣",
-        "CityEngName": "Hualien"
+        "CityEngName": "HualienCounty"
       }
     ]
   },
@@ -105,15 +105,15 @@ export const AreaCityData = [
     "CityList": [
       {
         "CityName": "連江縣",
-        "CityEngName": "Lienchiang"
+        "CityEngName": "LienchiangCounty"
       },
       {
         "CityName": "澎湖縣",
-        "CityEngName": "Penghu"
+        "CityEngName": "PenghuCounty"
       },
       {
         "CityName": "金門縣",
-        "CityEngName": "Kinmen"
+        "CityEngName": "KinmenCounty"
       }
     ]
   }
