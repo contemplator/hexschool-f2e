@@ -60,7 +60,7 @@ export class FoodComponent implements OnInit {
   }
 
   getAttractionImage(picture: TourismPicture | undefined): SafeUrl {
-    return picture && picture.PictureUrl1 ? `url(${picture.PictureUrl1})` : '';
+    return picture && picture.PictureUrl1 ? `url(${picture.PictureUrl1})` : 'url(./assets/carousel/北台灣.png)';
   }
 
   onAttractionClick(attraction: RestaurantTourismInfo): void {
