@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+// eslint-disable-next-line @nrwl/nx/enforce-module-boundaries
 import { AreaCityData } from '../../../../../../libs/data';
+// eslint-disable-next-line @nrwl/nx/enforce-module-boundaries
 import { SelectItem } from '../../../../../../libs/viewmodels';
 import { AppService } from '../../app.service';
+// eslint-disable-next-line @nrwl/nx/enforce-module-boundaries
 import { ScenicSpotTourismInfo, TourismPicture } from '../../../../../../libs/viewmodels';
 import { SafeUrl } from '@angular/platform-browser';
 import marker from '@iconify/icons-fontisto/map-marker-alt';
@@ -25,8 +28,8 @@ export class AttractionComponent implements OnInit {
   showAttraction: ScenicSpotTourismInfo | null = null;
 
   constructor(
-    private service: AppService,
-    private router: Router
+    public service: AppService,
+    public router: Router
   ) { }
 
   ngOnInit(): void {

@@ -1,0 +1,76 @@
+<div class="attraction-container bg-white">
+  <ng-container *ngIf="!attraction">
+    <p>loading ...</p>
+  </ng-container>
+  <ng-container *ngIf="attraction">
+    <div class="attraction-image w-full">
+      <img [alt]="attraction.Name" [src]="getAttractionImage()" class="w-full">
+    </div>
+    <div class="attraction-header relative p-4">
+      <div class="basic-info">
+        <div class="attraction-name text-2xl">{{ attraction.Name }}</div>
+        <div class="attraction-localtion text-primary flex align-items-center mt-2">
+          <ic-icon class="text-primary w-1rem h-1rem mr-1" [icon]="markerIcon"></ic-icon>
+          <div>{{ attraction.City }}</div>
+        </div>
+        <div class="attraction-class text-pink-500 flex align-items-center mt-2">
+          <ic-icon class="text-pink-500 w-1rem h-1rem mr-1" [icon]="leafIcon"></ic-icon>
+          <div>{{ getAttractionClass() }}</div>
+        </div>
+      </div>
+      <div class="stamps h-6rem absolute">
+        <img alt="stamp" src="./assets/stamps-03.png" class="h-full">
+      </div>
+    </div>
+
+    <div class="attraction-desc p-4 pb-0">
+      <div class="attraction-desc-para line-height-3 white-space-normal mb-4" *ngFor="let paragraph of getAttractionDesc()">{{ paragraph }}</div>
+    </div>
+
+    <div class="attraction-tip pl-5 pr-4">
+      <div class="tip-item">
+        <div class="label-icon">
+          <ic-icon class="text-primary w-2rem h-2rem mr-1" [icon]="mapMarkerIcon"></ic-icon>
+        </div>
+        <div class="tip-value">
+          <ng-container *ngIf="attraction.Position">
+            {{ attraction.Address }}
+            <a class="no-underline text-primary" [href]="getPosition()" target="_blank">
+              <ic-icon class="text-primary w-2rem h-2rem mr-1" [icon]="mapIcon"></ic-icon>
+            </a>
+          </ng-container>
+          <ng-container *ngIf="!attraction.Position">
+            {{ attraction.Address }}
+          </ng-container>
+        </div>
+      </div>
+      <div class="tip-item" *ngIf="attraction.ParkingInfo">
+        <div class="label-icon">
+          <ic-icon class="text-primary w-2rem h-2rem mr-1" [icon]="parkingIcon"></ic-icon>
+        </div>
+        <div class="tip-value">
+          {{ attraction.ParkingInfo }}
+          <a class="no-underline text-primary" [href]="getParkingPosition()" target="_blank" *ngIf="getParkingPosition()">
+            <ic-icon class="text-primary w-2rem h-2rem mr-1" [icon]="mapIcon"></ic-icon>
+          </a>
+        </div>
+      </div>
+      <div class="tip-item" *ngIf="attraction.MapUrl">
+        <div class="label-icon">
+          <ic-icon class="text-primary w-2rem h-2rem mr-1" [icon]="globalIcon"></ic-icon>
+        </div>
+        <div class="tip-value">{{ attraction.MapUrl }}</div>
+      </div>
+      <div>
+        <a [href]="'tel:' + attraction.Phone" class="btn-phone border-round border-1 border-primary py-2 px-3 inline-flex align-items-center text-primary no-underline">
+          <ic-icon class="mr-2 text-lg" [icon]="phoneIcon"></ic-icon>
+          {{ attraction.Phone }}
+        </a>
+      </div>
+    </div>
+
+    <div class="attraction-map p-4 pt-2">
+      <iframe [src]="getMapPosition()" width="100%" frameborder="0" style="border:0" allowfullscreen></iframe>
+    </div>
+  </ng-container>
+</div>

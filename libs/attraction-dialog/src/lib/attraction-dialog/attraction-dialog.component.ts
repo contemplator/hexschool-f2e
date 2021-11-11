@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import timesLine from '@iconify/icons-clarity/times-line';
-import { ScenicSpotTourismInfo } from '../../../../viewmodels';
+// eslint-disable-next-line @nrwl/nx/enforce-module-boundaries
+import { ScenicSpotTourismInfo, TourismPicture } from '../../../../viewmodels';
 import marker from '@iconify/icons-fontisto/map-marker-alt';
 
 @Component({
@@ -10,9 +11,13 @@ import marker from '@iconify/icons-fontisto/map-marker-alt';
 })
 export class AttractionDialogComponent {
   @Input() display = true;
-  @Input() attraction: ScenicSpotTourismInfo | null = null;
+  @Input() attraction: {
+    Name?: string,
+    City?: string,
+    Picture?: TourismPicture
+  } | null = null;
   @Output() closeDialog: EventEmitter<MouseEvent> = new EventEmitter();
-  @Output() moreClick: EventEmitter<ScenicSpotTourismInfo | null> = new EventEmitter();
+  @Output() moreClick: EventEmitter<any> = new EventEmitter();
   timesLineIcon = timesLine;
   markerIcon = marker;
 

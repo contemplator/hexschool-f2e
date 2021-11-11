@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 // eslint-disable-next-line @nrwl/nx/enforce-module-boundaries
-import { ScenicSpotTourismInfo } from '../../../../../libs/viewmodels';
+import { RestaurantTourismInfo } from '../../../../../libs/viewmodels';
 import { AppService } from '../app.service';
 import marker from '@iconify/icons-fontisto/map-marker-alt';
 import leaf from '@iconify/icons-fluent/leaf-one-16-filled';
@@ -15,12 +15,12 @@ import phone from '@iconify/icons-carbon/phone';
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 
 @Component({
-  selector: 'hexschool-f2e-attraction-info',
-  templateUrl: './attraction-info.component.html',
-  styleUrls: ['./attraction-info.component.scss']
+  selector: 'hexschool-f2e-restaurant-info',
+  templateUrl: './restaurant-info.component.html',
+  styleUrls: ['./restaurant-info.component.scss']
 })
-export class AttractionInfoComponent implements OnInit {
-  attraction: ScenicSpotTourismInfo | null = null;
+export class RestaurantInfoComponent implements OnInit {
+  attraction: RestaurantTourismInfo | null = null;
   markerIcon = marker;
   leafIcon = leaf;
   mapMarkerIcon = mapMarker;
@@ -38,7 +38,7 @@ export class AttractionInfoComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.attraction = this.service.attraction;
+    this.attraction = this.service.restaurant;
   }
 
   getAttractionImage(): string {
@@ -47,20 +47,14 @@ export class AttractionInfoComponent implements OnInit {
 
   getAttractionClass(): string {
     const result: string[] = [];
-    if (this.attraction && this.attraction.Class1) {
-      result.push(this.attraction.Class1)
+    if (this.attraction && this.attraction.Class) {
+      result.push(this.attraction.Class)
     }
-    if (this.attraction && this.attraction.Class2) {
-      result.push(this.attraction.Class2)
-    }
-    if (this.attraction && this.attraction.Class3) {
-      result.push(this.attraction.Class3)
-    }
-    return result.length > 0 ? result.join('、') : '景點';
+    return result.length > 0 ? result.join('、') : '餐廳';
   }
 
   getAttractionDesc(): string[] {
-    const result = this.attraction && this.attraction.DescriptionDetail ? this.attraction?.DescriptionDetail.trim().replace(/\s/g, '\n\r') : 'Desc';
+    const result = this.attraction && this.attraction.Description ? this.attraction?.Description.trim().replace(/\s/g, '\n\r') : 'Desc';
     console.log(result);
     return result.split('\n\r');
   }
@@ -86,5 +80,4 @@ export class AttractionInfoComponent implements OnInit {
       return '';
     }
   }
-
 }

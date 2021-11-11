@@ -20,17 +20,25 @@ import { TabViewModule } from 'primeng/tabview';
 import { DropdownModule } from 'primeng/dropdown';
 import { IconModule } from '@visurel/iconify-angular';
 // customer module
+// eslint-disable-next-line @nrwl/nx/enforce-module-boundaries
 import { AttractionDialogModule } from '../../../../libs/attraction-dialog/src/lib/attraction-dialog.module';
 import { AttractionInfoComponent } from './attraction-info/attraction-info.component';
+import { RestaurantInfoComponent } from './restaurant-info/restaurant-info.component';
+import { HotelInfoComponent } from './hotel-info/hotel-info.component';
+import { BusInfoComponent } from './bus-info/bus-info.component';
 
 const routes: Route[] = [
   { path: '', component: IndexComponent },
   { path: 'attraction-info/:id', component: AttractionInfoComponent },
-  { path: 'attraction-info', component: AttractionInfoComponent }
+  { path: 'attraction-info', component: AttractionInfoComponent },
+  { path: 'restaurant-info/:id', component: RestaurantInfoComponent },
+  { path: 'restaurant-info', component: RestaurantInfoComponent },
+  { path: 'hotel-info/:id', component: RestaurantInfoComponent },
+  { path: 'hotel-info', component: RestaurantInfoComponent }
 ];
 
 @NgModule({
-  declarations: [AppComponent, IndexComponent, FoodComponent, HotelComponent, VehicleComponent, AttractionComponent, AttractionInfoComponent],
+  declarations: [AppComponent, IndexComponent, FoodComponent, HotelComponent, VehicleComponent, AttractionComponent, AttractionInfoComponent, RestaurantInfoComponent, HotelInfoComponent, BusInfoComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
