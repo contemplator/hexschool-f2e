@@ -1,18 +1,18 @@
 <header class="flex justify-content-between align-items-center px-3 py-2">
-  <div class="page-action flex-auto">
-    <i class="pi pi-angle-left text-2xl text-gray-500" (click)="onBackClick()"></i>
+  <div class="page-action flex-auto md:flex-initial">
+    <i class="pi pi-angle-left text-2xl text-gray-500 cursor-pointer" (click)="onBackClick()"></i>
   </div>
-  <div class="page-title flex-auto flex justify-content-center align-items-center">
+  <div class="page-title flex-auto flex justify-content-center align-items-center md:justify-content-start">
     <div class="icon">
       <img src="./assets/logo.png" alt="logo" class="h-2rem mr-2">
     </div>
-    <h1 class="title text-xl text-primary font-normal" (click)="onIndexClick()">愛遊台灣</h1>
+    <h1 class="title text-xl text-primary font-normal cursor-pointer m-0" (click)="onIndexClick()">愛遊台灣</h1>
   </div>
   <div class="main-action flex-auto flex justify-content-end">
     <!-- <i class="pi pi-search text-primary text-2xl mr-2"></i> -->
-    <ic-icon class="text-primary text-2xl mr-1" [icon]="stampIcon" (click)="onCollectionClick()"></ic-icon>
+    <ic-icon class="text-primary text-2xl mr-1 cursor-pointer md:mr-3" [icon]="stampIcon" (click)="onCollectionClick()"></ic-icon>
     <!-- <i class="pi pi-stampIcon text-gray-500 " (click)="onCollectionClick()"></i> -->
-    <i class="pi pi-heart text-pink-500 text-2xl" (click)="onFavoriateClick()"></i>
+    <i class="pi pi-heart text-pink-500 text-2xl cursor-pointer" (click)="onFavoriateClick()"></i>
   </div>
 </header>
 <div class="router-content bg-gray-100">

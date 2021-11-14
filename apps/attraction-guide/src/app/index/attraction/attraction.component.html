@@ -1,25 +1,27 @@
 <div class="bg-gray-100">
-  <!-- 篩選條件 -->
-  <div class="search-field bg-primary flex justify-content-between align-items-center p-1 w-full" *ngIf="showSearch === true">
-    <div class="mr-2 flex-initial">
-      <p-dropdown [options]="areaOptions" [(ngModel)]="selectedArea" (onChange)="onAreaChange()"></p-dropdown>
+  <div class="search-field-container md:px-4 md:py-2">
+    <!-- 篩選條件 -->
+    <div class="search-field bg-primary flex justify-content-between align-items-center p-1 w-full md:inline-flex md:w-auto" *ngIf="showSearch === true">
+      <div class="mr-2 flex-initial">
+        <p-dropdown [options]="areaOptions" [(ngModel)]="selectedArea" (onChange)="onAreaChange()"></p-dropdown>
+      </div>
+      <div class="mr-2 flex-initial">
+        <p-dropdown [options]="cityOptions" [(ngModel)]="selectedCity"></p-dropdown>
+      </div>
+      <div class="flex-1 md:flex-none md:w-10rem">
+        <input type="text" pInputText [(ngModel)]="searchKeyword" class="w-full" placeholder="關鍵字">
+      </div>
     </div>
-    <div class="mr-2 flex-initial">
-      <p-dropdown [options]="cityOptions" [(ngModel)]="selectedCity"></p-dropdown>
-    </div>
-    <div class="flex-1">
-      <input type="text" pInputText [(ngModel)]="searchKeyword" class="w-full" placeholder="關鍵字">
-    </div>
-  </div>
-  <!-- 推薦搜尋 -->
-  <div class="suggestion flex justify-content-start align-items-center p-2 pb-0"  *ngIf="showSearch === true">
-    <div class="text-gray-500">當季熱區：</div>
-    <div class="suggstion-container flex justify-content-start align-items-center">
-      <div *ngFor="let item of hotSpot" class="suggstion-item p-1 mr-1 border-primary border-round border-1 text-primary">{{ item }}</div>
+    <!-- 推薦搜尋 -->
+    <div class="suggestion flex justify-content-start align-items-center p-2 pb-0 md:inline-flex" *ngIf="showSearch === true">
+      <div class="text-gray-500">當季熱區：</div>
+      <div class="suggstion-container flex justify-content-start align-items-center">
+        <div *ngFor="let item of hotSpot" class="suggstion-item p-1 mr-1 border-primary border-round border-1 text-primary">{{ item }}</div>
+      </div>
     </div>
   </div>
   <!-- 景點列表 -->
-  <div class="attraction-container px-2 flex flex-wrap mt-2">
+  <div class="attraction-container px-2 flex flex-wrap mt-2 md:px-4">
     <ng-container *ngFor="let attraction of attractions">
       <div class="attraction border-round bg-white mb-2">
         <div class="attraction-image w-full h-8rem border-round-top" [ngStyle]="{'background-image': getAttractionImage(attraction.Picture)}" (click)="onAttractionClick(attraction)"></div>

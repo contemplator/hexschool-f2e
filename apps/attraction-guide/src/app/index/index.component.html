@@ -7,17 +7,17 @@
     </span>
   </div>
   <!-- carousel 輪播 -->
-  <div class="carousel w-screen h-15rem">
+  <div class="carousel w-screen h-15rem md:h-20rem relative" [style.z-index]="101">
     <p-carousel [value]="carouselList" [autoplayInterval]="3000" [circular]="true" [showNavigators]="true" [showIndicators]="false">
       <ng-template let-car pTemplate="item">
-        <div class="carousel-item w-screen h-15rem flex align-items-center justify-content-center" [ngStyle]="{'background-image': car.img_path}">
+        <div class="carousel-item w-screen h-15rem md:h-20rem flex align-items-center justify-content-center" [ngStyle]="{'background-image': car.img_path}">
           <div class="carousel-title text-6xl text-white font-normal">{{ car.title }}</div>
         </div>
       </ng-template>
     </p-carousel>
   </div>
   <!-- tabview 頁籤 -->
-  <div class="tab-view mt-3">
+  <div class="tab-view mt-3 md:-mt-6 relative" [style.z-index]="103">
     <p-tabView>
       <p-tabPanel header="景點">
         <ng-template pTemplate="header">
