@@ -1,1 +1,12 @@
-<p>collection works!</p>
+<div class="colleaction-container p-2">
+  <div class="area-stamps-container">
+    <h5 class="text-center my-4 text-2xl">
+      區域版念章
+    </h5>
+    <div class="area-collected-list flex flex-wrap justify-content-between px-2">
+      <div *ngFor="let city of cities" class="area-collected-item w-6rem h-6rem flex align-items-center">
+        <img [alt]="city.CityName" [src]="getStampImagePath(city.CityEngName)" class="w-full">
+      </div>
+    </div>
+  </div>
+</div>

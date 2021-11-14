@@ -106,3 +106,8 @@ export interface NameType {
   Zh_tw?: string;       // 中文繁體名稱,
   En?: string;          // 英文名稱
 }
+
+export interface City {
+  CityName: string;
+  CityEngName: string;
+}
