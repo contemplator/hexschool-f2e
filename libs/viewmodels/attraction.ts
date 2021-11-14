@@ -111,3 +111,5 @@ export interface City {
   CityName: string;
   CityEngName: string;
 }
+
+export const DEFAULT_ATTRACTION_IMAGE = './assets/default.png';

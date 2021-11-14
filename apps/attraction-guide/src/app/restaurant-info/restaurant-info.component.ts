@@ -42,7 +42,7 @@ export class RestaurantInfoComponent implements OnInit {
   }
 
   getAttractionImage(): string {
-    return this.attraction && this.attraction.Picture && this.attraction.Picture.PictureUrl1 ? this.attraction.Picture.PictureUrl1 : '';
+    return this.attraction && this.attraction.Picture && this.attraction.Picture.PictureUrl1 ? this.attraction.Picture.PictureUrl1 : './assets/default.png';
   }
 
   getAttractionClass(): string {
@@ -55,7 +55,6 @@ export class RestaurantInfoComponent implements OnInit {
 
   getAttractionDesc(): string[] {
     const result = this.attraction && this.attraction.Description ? this.attraction?.Description.trim().replace(/\s/g, '\n\r') : 'Desc';
-    console.log(result);
     return result.split('\n\r');
   }
 

@@ -67,7 +67,6 @@ export class HotelComponent implements OnInit {
   onAttractionClick(attraction: HotelTourismInfo): void {
     this.showAttraction = attraction;
     this.showDialog = true;
-    console.log(JSON.stringify(attraction));
   }
 
   onDialogClose(event: MouseEvent): void {

@@ -37,7 +37,6 @@ export class VehicleComponent implements OnInit {
   }
 
   onAttractionClick(attraction: BusA1Data): void {
-    console.log(JSON.stringify(attraction));
     this.service.bus = (attraction.TaiwanTripName && attraction.TaiwanTripName.Zh_tw) || this.service.bus;
     this.router.navigate(['bus-info', attraction ? attraction.TaiwanTripName : 0]);
   }

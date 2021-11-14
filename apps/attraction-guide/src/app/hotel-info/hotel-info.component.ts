@@ -55,7 +55,6 @@ export class HotelInfoComponent implements OnInit {
 
   getAttractionDesc(): string[] {
     const result = this.attraction && this.attraction.Description ? this.attraction?.Description.trim().replace(/\s/g, '\n\r') : 'Desc';
-    console.log(result);
     return result.split('\n\r');
   }
 

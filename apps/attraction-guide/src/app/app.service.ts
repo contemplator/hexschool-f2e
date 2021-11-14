@@ -37,19 +37,6 @@ export class AppService {
     return result;
   }
 
-  // private parseJSONtoParams(data: any): string {
-  //   console.log(data);
-  //   const params = new URLSearchParams();
-  //   for (const key in data) {
-  //     if (typeof (data[key]) === 'object') {
-  //       params.append(key, JSON.stringify(data[key]));
-  //     } else {
-  //       params.append(key, data[key]);
-  //     }
-  //   }
-  //   return params.toString();
-  // }
-
   private parsePureCharParams(data: any): string {
     const result: string[] = [];
     for (const key in data) {

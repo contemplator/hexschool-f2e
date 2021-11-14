@@ -67,7 +67,6 @@ export class FoodComponent implements OnInit {
   onAttractionClick(attraction: RestaurantTourismInfo): void {
     this.showAttraction = attraction;
     this.showDialog = true;
-    console.log(JSON.stringify(attraction));
   }
 
   onDialogClose(event: MouseEvent): void {

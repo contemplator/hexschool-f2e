@@ -65,7 +65,6 @@ export class AttractionComponent implements OnInit {
   onAttractionClick(attraction: ScenicSpotTourismInfo): void {
     this.showAttraction = attraction;
     this.showDialog = true;
-    console.log(JSON.stringify(attraction));
   }
 
   onDialogClose(event: MouseEvent): void {
