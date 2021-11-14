@@ -1,6 +1,6 @@
 <div class="bg-gray-100">
   <!-- 篩選條件 -->
-  <div class="search-field bg-primary flex justify-content-between align-items-center p-1 w-full">
+  <div class="search-field bg-primary flex justify-content-between align-items-center p-1 w-full" *ngIf="showSearch === true">
     <div class="mr-2 flex-initial">
       <p-dropdown [options]="areaOptions" [(ngModel)]="selectedArea" (onChange)="onAreaChange()"></p-dropdown>
     </div>
@@ -12,20 +12,20 @@
     </div>
   </div>
   <!-- 推薦搜尋 -->
-  <div class="suggestion flex justify-content-start align-items-center p-2">
+  <div class="suggestion flex justify-content-start align-items-center p-2 pb-0"  *ngIf="showSearch === true">
     <div class="text-gray-500">當季熱區：</div>
     <div class="suggstion-container flex justify-content-start align-items-center">
       <div *ngFor="let item of hotSpot" class="suggstion-item p-1 mr-1 border-primary border-round border-1 text-primary">{{ item }}</div>
     </div>
   </div>
   <!-- 景點列表 -->
-  <div class="attraction-container px-2 flex flex-wrap">
+  <div class="attraction-container px-2 flex flex-wrap mt-2">
     <ng-container *ngFor="let attraction of attractions">
       <div class="attraction border-round bg-white mb-2">
         <div class="attraction-image w-full h-8rem border-round-top" [ngStyle]="{'background-image': getAttractionImage(attraction.Picture)}" (click)="onAttractionClick(attraction)"></div>
         <div class="attraction-info p-2 w-full">
           <div class="attraction-name w-full white-space-nowrap overflow-hidden text-overflow-ellipsis">{{ attraction.Name }}</div>
-          <div class="attraction-label w-full flex align-items-center mt-2">
+          <div class="attraction-label w-full flex align-items-center mt-2 text-sm">
             <ic-icon class="text-primary w-1rem h-1rem mr-1" [icon]="markerIcon"></ic-icon>
             <div class="text-primary">{{ attraction.City }}</div>
           </div>

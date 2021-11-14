@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AppService } from '../../app.service';
 import { SafeUrl } from '@angular/platform-browser';
@@ -14,6 +14,7 @@ import marker from '@iconify/icons-fontisto/map-marker-alt';
   styleUrls: ['./hotel.component.scss']
 })
 export class HotelComponent implements OnInit {
+  @Input() showSearch = true;
   areaOptions: SelectItem[] = [];
   selectedArea = '';
   cityOptions: SelectItem[] = [];

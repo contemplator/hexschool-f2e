@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 // eslint-disable-next-line @nrwl/nx/enforce-module-boundaries
 import { AreaCityData } from '../../../../../../libs/data';
 // eslint-disable-next-line @nrwl/nx/enforce-module-boundaries
@@ -16,6 +16,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./attraction.component.scss']
 })
 export class AttractionComponent implements OnInit {
+  @Input() showSearch = true;
   areaOptions: SelectItem[] = [];
   selectedArea = '';
   cityOptions: SelectItem[] = [];

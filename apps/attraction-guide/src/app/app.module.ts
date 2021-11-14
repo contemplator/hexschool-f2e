@@ -26,9 +26,13 @@ import { AttractionInfoComponent } from './attraction-info/attraction-info.compo
 import { RestaurantInfoComponent } from './restaurant-info/restaurant-info.component';
 import { HotelInfoComponent } from './hotel-info/hotel-info.component';
 import { BusInfoComponent } from './bus-info/bus-info.component';
+import { CollectionComponent } from './collection/collection.component';
+import { FavoriateComponent } from './favoriate/favoriate.component';
 
 const routes: Route[] = [
   { path: '', component: IndexComponent },
+  { path: 'favoriate', component: FavoriateComponent },
+  { path: 'collection', component: CollectionComponent },
   { path: 'attraction-info/:id', component: AttractionInfoComponent },
   { path: 'attraction-info', component: AttractionInfoComponent },
   { path: 'restaurant-info/:id', component: RestaurantInfoComponent },
@@ -38,7 +42,7 @@ const routes: Route[] = [
 ];
 
 @NgModule({
-  declarations: [AppComponent, IndexComponent, FoodComponent, HotelComponent, VehicleComponent, AttractionComponent, AttractionInfoComponent, RestaurantInfoComponent, HotelInfoComponent, BusInfoComponent],
+  declarations: [AppComponent, IndexComponent, FoodComponent, HotelComponent, VehicleComponent, AttractionComponent, AttractionInfoComponent, RestaurantInfoComponent, HotelInfoComponent, BusInfoComponent, CollectionComponent, FavoriateComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,

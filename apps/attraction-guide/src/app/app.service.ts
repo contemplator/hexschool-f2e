@@ -82,4 +82,29 @@ export class AppService {
     `;
     return this.get(url);
   }
+
+  fetchFavoriateAttraction($top = 30, $skip = 0): Observable<ScenicSpotTourismInfo[]> {
+    const params = this.parsePureCharParams({ $top, $skip });
+    const url = `https://ptx.transportdata.tw/MOTC/v2/Tourism/ScenicSpot?${params}&$format=JSON`;
+    return this.get(url);
+  }
+
+  fetchFavoriateRestaurant($top = 30, $skip = 0): Observable<RestaurantTourismInfo[]> {
+    const params = this.parsePureCharParams({ $top, $skip });
+    const url = `https://ptx.transportdata.tw/MOTC/v2/Tourism/Restaurant?${params}&$format=JSON`;
+    return this.get(url);
+  }
+
+  fetchFavoriateHotel($top = 30, $skip = 0): Observable<HotelTourismInfo[]> {
+    const params = this.parsePureCharParams({ $top, $skip });
+    const url = `https://ptx.transportdata.tw/MOTC/v2/Tourism/Hotel?${params}&$format=JSON`;
+    return this.get(url);
+  }
+
+  fetchFavoriateTrip($top = 30, $skip = 0): Observable<BusA1Data[]> {
+    const params = this.parsePureCharParams({ $top, $skip });
+    const url = `https://ptx.transportdata.tw/MOTC/v2/Tourism/Bus/RealTimeByFrequency/TaiwanTrip?${params}&$format=JSON
+    `;
+    return this.get(url);
+  }
 }

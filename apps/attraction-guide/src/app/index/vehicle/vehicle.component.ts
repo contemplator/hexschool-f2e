@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 // eslint-disable-next-line @nrwl/nx/enforce-module-boundaries
 import { BusA1Data } from 'libs/viewmodels';
@@ -10,6 +10,7 @@ import { AppService } from '../../app.service';
   styleUrls: ['./vehicle.component.scss']
 })
 export class VehicleComponent implements OnInit {
+  @Input() showSearch = true;
   searchKeyword = '';
   hotSpot: string[] = [];
   attractions: BusA1Data[] = [];

@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 // eslint-disable-next-line @nrwl/nx/enforce-module-boundaries
-import { RestaurantTourismInfo, ScenicSpotTourismInfo, SelectItem, TourismPicture } from 'libs/viewmodels';
+import { RestaurantTourismInfo, SelectItem, TourismPicture } from 'libs/viewmodels';
 import { AppService } from '../../app.service';
 import marker from '@iconify/icons-fontisto/map-marker-alt';
 // eslint-disable-next-line @nrwl/nx/enforce-module-boundaries
@@ -14,6 +14,7 @@ import { SafeUrl } from '@angular/platform-browser';
   styleUrls: ['./food.component.scss']
 })
 export class FoodComponent implements OnInit {
+  @Input() showSearch = true;
   areaOptions: SelectItem[] = [];
   selectedArea = '';
   cityOptions: SelectItem[] = [];

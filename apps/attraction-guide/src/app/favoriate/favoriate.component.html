@@ -1,0 +1,41 @@
+<!-- tabview 頁籤 -->
+<div class="tab-view py-1">
+  <p-tabView>
+    <p-tabPanel header="景點">
+      <ng-template pTemplate="header">
+        <div class="flex mx-auto justify-content-between align-items-center">
+          <ic-icon class="mr-1 mt-1" [icon]="attractionIcon"></ic-icon>
+          <span class="font-normal">景點</span>
+        </div>
+      </ng-template>
+      <hexschool-f2e-attraction [showSearch]="false"></hexschool-f2e-attraction>
+    </p-tabPanel>
+    <p-tabPanel header="美食">
+      <ng-template pTemplate="header">
+        <div class="flex mx-auto justify-content-between align-items-center">
+          <ic-icon class="mr-1 mt-1" [icon]="foodIcon"></ic-icon>
+          <span class="font-normal">美食</span>
+        </div>
+      </ng-template>
+      <hexschool-f2e-food [showSearch]="false"></hexschool-f2e-food>
+    </p-tabPanel>
+    <p-tabPanel header="住宿">
+      <ng-template pTemplate="header">
+        <div class="flex mx-auto justify-content-between align-items-center">
+          <ic-icon class="mr-1 mt-1" [icon]="hotelIcon"></ic-icon>
+          <span class="font-normal">住宿</span>
+        </div>
+      </ng-template>
+      <hexschool-f2e-hotel [showSearch]="false"></hexschool-f2e-hotel>
+    </p-tabPanel>
+    <p-tabPanel header="交通">
+      <ng-template pTemplate="header">
+        <div class="flex mx-auto justify-content-between align-items-center">
+          <ic-icon class="mr-1 mt-1" [icon]="vehicleBusIcon"></ic-icon>
+          <span class="font-normal">交通</span>
+        </div>
+      </ng-template>
+      <hexschool-f2e-vehicle [showSearch]="false"></hexschool-f2e-vehicle>
+    </p-tabPanel>
+  </p-tabView>
+</div>
