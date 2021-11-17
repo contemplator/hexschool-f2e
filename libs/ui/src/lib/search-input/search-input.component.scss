@@ -1,0 +1,10 @@
+.search-input:focus {
+  outline: none !important;
+  border: 0;
+}
+.divider{
+  width: 1px;
+  border-right: 1px solid var(--gray-500);
+  height: 32px;
+  margin: -8px 8px;
+}

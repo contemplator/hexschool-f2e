@@ -9,9 +9,7 @@
       "architect": {
         "test": {
           "builder": "@nrwl/jest:jest",
-          "outputs": [
-            "coverage/libs/attraction-dialog"
-          ],
+          "outputs": ["coverage/libs/attraction-dialog"],
           "options": {
             "jestConfig": "libs/attraction-dialog/jest.config.js",
             "passWithNoTests": true
@@ -37,9 +35,7 @@
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
-          "outputs": [
-            "{options.outputPath}"
-          ],
+          "outputs": ["{options.outputPath}"],
           "options": {
             "outputPath": "dist/apps/attraction-guide",
             "index": "apps/attraction-guide/src/index.html",
@@ -123,9 +119,7 @@
         },
         "test": {
           "builder": "@nrwl/jest:jest",
-          "outputs": [
-            "coverage/apps/attraction-guide"
-          ],
+          "outputs": ["coverage/apps/attraction-guide"],
           "options": {
             "jestConfig": "apps/attraction-guide/jest.config.js",
             "passWithNoTests": true
@@ -153,20 +147,14 @@
         },
         "lint": {
           "builder": "@nrwl/linter:eslint",
-          "outputs": [
-            "{options.outputFile}"
-          ],
+          "outputs": ["{options.outputFile}"],
           "options": {
-            "lintFilePatterns": [
-              "apps/attraction-guide-e2e/**/*.{js,ts}"
-            ]
+            "lintFilePatterns": ["apps/attraction-guide-e2e/**/*.{js,ts}"]
           }
         }
       },
       "tags": [],
-      "implicitDependencies": [
-        "attraction-guide"
-      ]
+      "implicitDependencies": ["attraction-guide"]
     },
     "hexschool-f2e": {
       "projectType": "application",
@@ -176,9 +164,7 @@
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
-          "outputs": [
-            "{options.outputPath}"
-          ],
+          "outputs": ["{options.outputPath}"],
           "options": {
             "outputPath": "dist/apps/hexschool-f2e",
             "index": "apps/hexschool-f2e/src/index.html",
@@ -190,9 +176,7 @@
               "apps/hexschool-f2e/src/favicon.ico",
               "apps/hexschool-f2e/src/assets"
             ],
-            "styles": [
-              "apps/hexschool-f2e/src/styles.scss"
-            ],
+            "styles": ["apps/hexschool-f2e/src/styles.scss"],
             "scripts": []
           },
           "configurations": {
@@ -257,9 +241,7 @@
         },
         "test": {
           "builder": "@nrwl/jest:jest",
-          "outputs": [
-            "coverage/apps/hexschool-f2e"
-          ],
+          "outputs": ["coverage/apps/hexschool-f2e"],
           "options": {
             "jestConfig": "apps/hexschool-f2e/jest.config.js",
             "passWithNoTests": true
@@ -292,20 +274,163 @@
         },
         "lint": {
           "builder": "@nrwl/linter:eslint",
-          "outputs": [
-            "{options.outputFile}"
-          ],
+          "outputs": ["{options.outputFile}"],
           "options": {
-            "lintFilePatterns": [
-              "apps/hexschool-f2e-e2e/**/*.{js,ts}"
-            ]
+            "lintFilePatterns": ["apps/hexschool-f2e-e2e/**/*.{js,ts}"]
           }
         }
       },
       "tags": [],
-      "implicitDependencies": [
-        "hexschool-f2e"
-      ]
+      "implicitDependencies": ["hexschool-f2e"]
+    },
+    "ubike-travel": {
+      "projectType": "application",
+      "root": "apps/ubike-travel",
+      "sourceRoot": "apps/ubike-travel/src",
+      "prefix": "hexschool-f2e",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "outputs": ["{options.outputPath}"],
+          "options": {
+            "outputPath": "dist/apps/ubike-travel",
+            "index": "apps/ubike-travel/src/index.html",
+            "main": "apps/ubike-travel/src/main.ts",
+            "polyfills": "apps/ubike-travel/src/polyfills.ts",
+            "tsConfig": "apps/ubike-travel/tsconfig.app.json",
+            "inlineStyleLanguage": "scss",
+            "assets": [
+              "apps/ubike-travel/src/favicon.ico",
+              "apps/ubike-travel/src/assets"
+            ],
+            "styles": [
+              "node_modules/normalize.css/normalize.css",
+              "node_modules/primeflex/primeflex.css",
+              "apps/ubike-travel/src/styles.scss"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kb",
+                  "maximumError": "1mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "2kb",
+                  "maximumError": "4kb"
+                }
+              ],
+              "fileReplacements": [
+                {
+                  "replace": "apps/ubike-travel/src/environments/environment.ts",
+                  "with": "apps/ubike-travel/src/environments/environment.prod.ts"
+                }
+              ],
+              "outputHashing": "all"
+            },
+            "development": {
+              "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "configurations": {
+            "production": {
+              "browserTarget": "ubike-travel:build:production"
+            },
+            "development": {
+              "browserTarget": "ubike-travel:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "ubike-travel:build"
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "apps/ubike-travel/src/**/*.ts",
+              "apps/ubike-travel/src/**/*.html"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/apps/ubike-travel"],
+          "options": {
+            "jestConfig": "apps/ubike-travel/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      },
+      "tags": []
+    },
+    "ubike-travel-e2e": {
+      "root": "apps/ubike-travel-e2e",
+      "sourceRoot": "apps/ubike-travel-e2e/src",
+      "projectType": "application",
+      "architect": {
+        "e2e": {
+          "builder": "@nrwl/cypress:cypress",
+          "options": {
+            "cypressConfig": "apps/ubike-travel-e2e/cypress.json",
+            "devServerTarget": "ubike-travel:serve:development"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "ubike-travel:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "outputs": ["{options.outputFile}"],
+          "options": {
+            "lintFilePatterns": ["apps/ubike-travel-e2e/**/*.{js,ts}"]
+          }
+        }
+      },
+      "tags": [],
+      "implicitDependencies": ["ubike-travel"]
+    },
+    "ui": {
+      "projectType": "library",
+      "root": "libs/ui",
+      "sourceRoot": "libs/ui/src",
+      "prefix": "hexschool-f2e",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/ui"],
+          "options": {
+            "jestConfig": "libs/ui/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["libs/ui/src/**/*.ts", "libs/ui/src/**/*.html"]
+          }
+        }
+      },
+      "tags": []
     },
     "viewmodel": {
       "projectType": "library",
@@ -315,9 +440,7 @@
       "architect": {
         "test": {
           "builder": "@nrwl/jest:jest",
-          "outputs": [
-            "coverage/libs/viewmodel"
-          ],
+          "outputs": ["coverage/libs/viewmodel"],
           "options": {
             "jestConfig": "libs/viewmodel/jest.config.js",
             "passWithNoTests": true

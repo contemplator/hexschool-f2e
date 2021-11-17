@@ -40,7 +40,7 @@
     "@angular/cli": "~12.2.0",
     "@angular/compiler-cli": "^12.2.0",
     "@angular/language-service": "^12.2.0",
-    "@iconify/icons-akar-icons": "^1.1.26",
+    "@iconify/icons-akar-icons": "^1.1.27",
     "@iconify/icons-ant-design": "^1.1.1",
     "@iconify/icons-carbon": "^1.1.6",
     "@iconify/icons-clarity": "^1.1.2",
