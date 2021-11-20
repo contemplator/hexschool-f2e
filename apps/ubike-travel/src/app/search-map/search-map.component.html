@@ -1,0 +1,28 @@
+<div class="map fixed top-0 left-0 w-screen h-screen">
+  <agm-map [latitude]="lat" [longitude]="lng" class="w-full h-full" [zoom]="16" (centerChange)="onMapChange($event)">
+    <ng-container *ngFor="let item of stations">
+      <ng-container *ngIf="item.StationPosition.PositionLat && item.StationPosition.PositionLon">
+        <agm-marker [latitude]="item.StationPosition.PositionLat" [longitude]="item.StationPosition.PositionLon" [label]="item.AvailableRentBikes+''" [iconUrl]="'./assets/station-empty.png'" (markerClick)="onMarkerClick(item)"></agm-marker>
+      </ng-container>
+    </ng-container>
+  </agm-map>
+</div>
+
+<div class="header fixed top-0 w-screen">
+  <div class="header-title bg-primary w-full h-4rem flex align-items-center py-2 px-2">
+    <ic-icon [icon]="arrowIosBackIcon" [size]="'2rem'" class="text-white mr-1" (click)="onBackClick()"></ic-icon>
+    <div class="flex-1 h-full">
+      <img alt="logo" src="./assets/logo.png" class="h-full">
+    </div>
+    <p-dropdown [options]="showTypes" [(ngModel)]="selectedShowType"></p-dropdown>
+  </div>
+  <div class="header-search py-2 pl-4 pr-2 flex bg-white align-items-center">
+    <p-autoComplete [suggestions]="results" (completeMethod)="search($event)" class="flex-1" [style]="{'width': '100%'}" [inputStyle]="{'width': '100%'}" (onSelect)="onStationSelect($event)" [placeholder]="'輸入縣市、捷運站、U-bike 站名'"></p-autoComplete>
+    <ic-icon [icon]="timesIcon" [size]="'2rem'" class="text-gray-500 ml-1"></ic-icon>
+  </div>
+</div>
+
+<div class="footer w-screen h-3rem flex align-items-center justify-content-center bg-primary fixed bottom-0 left-0">
+  <img alt="bike-site-icon" src="./assets/icons-07.png">
+  <div>尋找附近站/點</div>
+</div>

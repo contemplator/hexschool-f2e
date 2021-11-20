@@ -283,6 +283,32 @@
       "tags": [],
       "implicitDependencies": ["hexschool-f2e"]
     },
+    "tdx-service": {
+      "projectType": "library",
+      "root": "libs/tdx-service",
+      "sourceRoot": "libs/tdx-service/src",
+      "prefix": "hexschool-f2e",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/tdx-service"],
+          "options": {
+            "jestConfig": "libs/tdx-service/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/tdx-service/src/**/*.ts",
+              "libs/tdx-service/src/**/*.html"
+            ]
+          }
+        }
+      },
+      "tags": []
+    },
     "ubike-travel": {
       "projectType": "application",
       "root": "apps/ubike-travel",
@@ -305,6 +331,9 @@
             ],
             "styles": [
               "node_modules/normalize.css/normalize.css",
+              "node_modules/primeicons/primeicons.css",
+              "node_modules/primeng/resources/themes/bootstrap4-light-blue/theme.css",
+              "node_modules/primeng/resources/primeng.min.css",
               "node_modules/primeflex/primeflex.css",
               "apps/ubike-travel/src/styles.scss"
             ],

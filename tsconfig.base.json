@@ -18,6 +18,7 @@
       "@hexschool-f2e/attraction-dialog": [
         "libs/attraction-dialog/src/index.ts"
       ],
+      "@hexschool-f2e/tdx-service": ["libs/tdx-service/src/index.ts"],
       "@hexschool-f2e/ui": ["libs/ui/src/index.ts"],
       "@hexschool-f2e/viewmodel": ["libs/viewmodel/src/index.ts"]
     }
