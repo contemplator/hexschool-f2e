@@ -84,7 +84,7 @@ export class SearchMapComponent implements OnInit, OnDestroy {
       this.stationResource = res;
       this.results = res
         .filter(item => item && item.StationName && item.StationName.Zh_tw ? item.StationName.Zh_tw.indexOf(event.query) > -1 : false)
-        .map(item => new SelectItem(item.StationName && item.StationName.Zh_tw ? item.StationName.Zh_tw.slice(11) : '', item.StationUID));
+        .map(item => new SelectItem(item.StationName && item.StationName.Zh_tw ? item.StationName.Zh_tw.slice(7) : '', item.StationUID));
     });
   }
 
