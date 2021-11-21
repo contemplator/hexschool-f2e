@@ -9,7 +9,14 @@
         <p-dropdown [options]="cities" [(ngModel)]="selectedCity"></p-dropdown>
       </div>
       <div class="w-full">
-        <p-autoComplete [suggestions]="results" (completeMethod)="search($event)" [style]="{'width': '100%'}" [inputStyle]="{'width': '100%'}" (onSelect)="onStationSelect($event)" [placeholder]="'輸入站名關鍵字'"></p-autoComplete>
+        <p-autoComplete [suggestions]="results" (completeMethod)="search($event)" [style]="{'width': '100%'}" [inputStyle]="{'width': '100%'}" (onSelect)="onStationSelect($event)" [placeholder]="'輸入站名關鍵字'">
+          <ng-template let-station pTemplate="item">
+            {{ station.label }}
+          </ng-template>
+          <ng-template let-station pTemplate="selectedItem">
+            {{ station.label }}
+          </ng-template>
+        </p-autoComplete>
       </div>
     </div>
     <div class="search-near border-1 border-round border-white p-2 mt-4 flex align-items-center justify-content-center" (click)="onSearchNearbyClick()">

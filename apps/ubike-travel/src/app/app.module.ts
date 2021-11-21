@@ -16,12 +16,17 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SearchMapComponent } from './search-map/search-map.component';
 import { IndexComponent } from './index/index.component';
 import { AgmCoreModule } from '@agm/core';
+import { ToastModule } from 'primeng/toast';
+import { MessageService } from 'primeng/api';
+import { DecimalPipe } from '@angular/common';
+
 @NgModule({
   declarations: [AppComponent, SearchMapComponent, IndexComponent],
   imports: [
     BrowserModule,
     RouterModule.forRoot([
       { path: '', component: IndexComponent },
+      { path: 'search-map/:lat/:lng', component: SearchMapComponent },
       { path: 'search-map', component: SearchMapComponent }
     ], { initialNavigation: 'enabledBlocking' }),
     UiModule,
@@ -33,10 +38,13 @@ import { AgmCoreModule } from '@agm/core';
     HttpClientModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyABCnBx0dgze3XWV51Ejp42sKWQjo64pco'
-    })
+    }),
+    ToastModule
   ],
   providers: [
-    TdxService
+    TdxService,
+    MessageService,
+    DecimalPipe
   ],
   bootstrap: [AppComponent],
 })

@@ -1,28 +1,88 @@
-<div class="map fixed top-0 left-0 w-screen h-screen">
-  <agm-map [latitude]="lat" [longitude]="lng" class="w-full h-full" [zoom]="16" (centerChange)="onMapChange($event)">
-    <ng-container *ngFor="let item of stations">
-      <ng-container *ngIf="item.StationPosition.PositionLat && item.StationPosition.PositionLon">
-        <agm-marker [latitude]="item.StationPosition.PositionLat" [longitude]="item.StationPosition.PositionLon" [label]="item.AvailableRentBikes+''" [iconUrl]="'./assets/station-empty.png'" (markerClick)="onMarkerClick(item)"></agm-marker>
+<div class="show-step-search" [hidden]="showStep !== 0">
+  <div class="map fixed top-0 left-0 w-screen h-screen">
+    <agm-map [latitude]="lat" [longitude]="lng" class="w-full h-full" [zoom]="16" (centerChange)="onMapChange($event)">
+      <ng-container *ngFor="let item of stations">
+        <ng-container *ngIf="item.StationPosition.PositionLat && item.StationPosition.PositionLon">
+          <agm-marker [latitude]="item.StationPosition.PositionLat" [longitude]="item.StationPosition.PositionLon" [label]="startTime === false ? item.AvailableRentBikes + '' : item.AvailableReturnBikes + ''" [iconUrl]="'./assets/station-full.png'" (markerClick)="onMarkerClick(item)"></agm-marker>
+        </ng-container>
       </ng-container>
-    </ng-container>
-  </agm-map>
-</div>
+    </agm-map>
+  </div>
 
-<div class="header fixed top-0 w-screen">
-  <div class="header-title bg-primary w-full h-4rem flex align-items-center py-2 px-2">
-    <ic-icon [icon]="arrowIosBackIcon" [size]="'2rem'" class="text-white mr-1" (click)="onBackClick()"></ic-icon>
-    <div class="flex-1 h-full">
-      <img alt="logo" src="./assets/logo.png" class="h-full">
+  <div class="header fixed top-0 w-screen">
+    <div class="header-title bg-primary w-full h-4rem flex align-items-center py-2 px-2">
+      <ic-icon [icon]="arrowIosBackIcon" [size]="'2rem'" class="text-white mr-1" (click)="onBackClick()"></ic-icon>
+      <div class="flex-1 h-full">
+        <img alt="logo" src="./assets/logo.png" class="h-full">
+      </div>
+      <p-dropdown [options]="showTypes" [(ngModel)]="selectedShowType"></p-dropdown>
     </div>
-    <p-dropdown [options]="showTypes" [(ngModel)]="selectedShowType"></p-dropdown>
+    <div class="header-search py-2 pl-4 pr-2 flex bg-white align-items-center">
+      <p-autoComplete [suggestions]="results" (completeMethod)="search($event)" class="flex-1" [style]="{'width': '100%'}" [inputStyle]="{'width': '100%'}" (onSelect)="onStationSelect($event)" [placeholder]="'輸入縣市、捷運站、U-bike 站名'" [(ngModel)]="searchSelectedStation">
+        <ng-template let-station pTemplate="item">
+          {{ station.label }}
+        </ng-template>
+        <ng-template let-station pTemplate="selectedItem">
+          {{ station.label }}
+        </ng-template>
+      </p-autoComplete>
+      <ic-icon [icon]="timesIcon" [size]="'2rem'" class="text-gray-500 ml-1"></ic-icon>
+    </div>
   </div>
-  <div class="header-search py-2 pl-4 pr-2 flex bg-white align-items-center">
-    <p-autoComplete [suggestions]="results" (completeMethod)="search($event)" class="flex-1" [style]="{'width': '100%'}" [inputStyle]="{'width': '100%'}" (onSelect)="onStationSelect($event)" [placeholder]="'輸入縣市、捷運站、U-bike 站名'"></p-autoComplete>
-    <ic-icon [icon]="timesIcon" [size]="'2rem'" class="text-gray-500 ml-1"></ic-icon>
+
+  <div class="footer w-screen flex align-items-center justify-content-center bg-primary fixed bottom-0 left-0 p-3 text-lg" (click)="onNearSearchClick()">
+    <img alt="bike-site-icon" src="./assets/icons-07.png" class="h-2rem mr-2">
+    <div>尋找附近站/點</div>
   </div>
 </div>
 
-<div class="footer w-screen h-3rem flex align-items-center justify-content-center bg-primary fixed bottom-0 left-0">
-  <img alt="bike-site-icon" src="./assets/icons-07.png">
-  <div>尋找附近站/點</div>
+<div class="show-step-station" [hidden]="showStep !== 1 || !selectedStation">
+  <div class="map fixed top-0 left-0 w-screen h-screen">
+    <agm-map [latitude]="lat" [longitude]="lng" class="w-full h-full" [zoom]="16" (centerChange)="onMapChange($event)">
+      <ng-container *ngFor="let item of stations">
+        <ng-container *ngIf="item.StationPosition.PositionLat && item.StationPosition.PositionLon && selectedStation">
+          <agm-marker [latitude]="item.StationPosition.PositionLat" [longitude]="item.StationPosition.PositionLon" [label]="startTime === false ? item.AvailableRentBikes + '' : item.AvailableReturnBikes + ''" [iconUrl]="item.StationUID === selectedStation.StationUID ? './assets/station-full.png' : './assets/station-empty.png'" (markerClick)="onMarkerClick(item)"></agm-marker>
+        </ng-container>
+      </ng-container>
+      <agm-marker [latitude]="this.userLat" [longitude]="this.userLng"></agm-marker>
+    </agm-map>
+  </div>
+
+  <div class="header fixed top-0 w-screen" *ngIf="selectedStation">
+    <div class="header-title bg-gray-600 text-white w-full h-4rem flex align-items-center py-2 px-2">
+      <ic-icon [icon]="arrowIosBackIcon" [size]="'2rem'" class="text-white mr-1" (click)="onStepBackClick()"></ic-icon>
+      <div>{{ selectedStation.StationName.Zh_tw }}</div>
+    </div>
+    <div class="station-info flex align-items-center shadow-2">
+      <div class="station-rent flex-1 text-center p-3 text-lg" [ngClass]="{'bg-primary': startTime === false, 'bg-white': startTime === true}">
+        可借車數 {{ selectedStation.AvailableRentBikes }}
+      </div>
+      <div class="station-rent flex-1 text-center p-3 text-lg" [ngClass]="{'bg-primary': startTime === true, 'bg-white': startTime === false}">
+        可停車位 {{ selectedStation.AvailableReturnBikes }}
+      </div>
+    </div>
+  </div>
+
+  <div class="footer w-screen flex align-items-center bg-primary fixed bottom-0 left-0 p-3">
+    <ng-container *ngIf="startTime === false">
+      <div class="btn-rent flex-1 text-center text-lg flex align-items-center justify-content-center" (click)="onTimeClick()">
+        <img alt="btn-rent-icon" src="./assets/icons-05.png" class="mr-2 h-2rem">
+        <div>開始租借</div>
+      </div>
+      <div class="btn-explore flex-1 text-center text-lg flex align-items-center justify-content-center">
+        <img alt="btn-explore-icon" src="./assets/icons-07.png" class="mr-2 h-2rem">
+        <div>探索附近</div>
+      </div>
+    </ng-container>
+    <ng-container *ngIf="startTime === true">
+      <div class="btn-rent flex-1 text-center text-lg flex align-items-center justify-content-center">
+        <img alt="btn-rent-icon" src="./assets/icons-05.png" class="mr-2 h-2rem">
+        <div [style.font-family]="'Courier New'">{{ times }}</div>
+      </div>
+      <div class="btn-explore flex-1 text-center text-lg flex align-items-center justify-content-center bg-primary" (click)="onTimeStopClick()">
+        <img alt="btn-explore-icon" src="./assets/icons-12.png" class="mr-2 h-2rem">
+        <div>停止計時</div>
+      </div>
+    </ng-container>
+  </div>
 </div>

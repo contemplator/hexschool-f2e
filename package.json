@@ -7,7 +7,9 @@
     "postinstall": "node ./decorate-angular-cli.js && ngcc --properties es2015 browser module main",
     "start": "nx serve",
     "build": "nx build",
-    "test": "nx test"
+    "test": "nx test",
+    "build-attraction": "ng build attraction-guide --prod --base-href=/hexschool-f2e-attraction/",
+    "build-ubike": "ng build ubike-travel --prod --base-href=/hexschool-f2e-ubike/"
   },
   "private": true,
   "dependencies": {
