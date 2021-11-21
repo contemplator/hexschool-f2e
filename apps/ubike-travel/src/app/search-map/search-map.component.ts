@@ -13,6 +13,7 @@ import attraction from '@iconify/icons-maki/attraction';
 import food from '@iconify/icons-fluent/food-16-filled';
 import mapMarker from '@iconify/icons-fontisto/map-marker-alt';
 import clockIcon from '@iconify/icons-akar-icons/clock';
+import { Client, TravelMode } from "@googlemaps/google-maps-services-js";
 
 interface ScenicSpotTourismInfoExt extends ScenicSpotTourismInfo {
   distance?: number;
@@ -60,6 +61,10 @@ export class SearchMapComponent implements OnInit, OnDestroy {
   clockIcon = clockIcon;
   attractions: ScenicSpotTourismInfoExt[] = [];
   restaurants: RestaurantTourismInfoExt[] = [];
+  // 路線
+  nextSpotLat?: number;
+  nextSpotLon?: number;
+  paths: any[] = [];;
 
   constructor(
     private service: TdxService,
@@ -155,6 +160,38 @@ export class SearchMapComponent implements OnInit, OnDestroy {
   onMarkerClick(station: BikeStationInfo): void {
     this.selectedStation = station;
     this.showStep = 1;
+    this.nextSpotLat = station.StationPosition.PositionLat || 0;
+    this.nextSpotLon = station.StationPosition.PositionLon || 0;
+    // this.service.getDirections(this.userLat, this.userLng, this.nextSpotLat, this.nextSpotLon).subscribe(res => {
+    //   console.log(res);
+    //   const routes = res.routes;
+    //   const legs = routes[0].lengs;
+    //   const leg = legs[0];
+    //   const steps = leg.steps;
+    //   this.paths = steps.map((step: any) => {
+    //     return { lat: step.end_location.lat, lng: step.end_location.lng };
+    //   })
+    // });
+
+    const client = new Client({});
+    client.directions({
+      params: {
+        origin: [this.userLat, this.userLng],
+        destination: [this.nextSpotLat, this.nextSpotLon],
+        mode: TravelMode.bicycling,
+        key: 'AIzaSyABCnBx0dgze3XWV51Ejp42sKWQjo64pco'
+      }
+    }).then(res => {
+      console.info(res);
+    }).catch(error => {
+      console.error(error);
+    });
+
+    // this.paths = [
+    //   { lat: this.userLat, lng: this.userLng },
+    //   { lat: this.nextSpotLat, lng: this.nextSpotLon },
+    // ]
+    console.info(this.userLat, this.userLng, this.nextSpotLat, this.nextSpotLon);
   }
 
   getCurrentLocation(): void {

@@ -11,7 +11,7 @@ import { BikeStation, BikeAvailability, BikeShape, ScenicSpotTourismInfo, Restau
 export class TdxService {
   appId = 'fcfb4ac781724b159db7fc6786ba7395';
   appKey = 'U6A4rgBSW8B5WYKjredCNnOaiCc';
-
+  gmapKey = 'AIzaSyABCnBx0dgze3XWV51Ejp42sKWQjo64pco';
   constructor(private http: HttpClient) { }
 
   private get(url: string): Observable<any> {
@@ -86,4 +86,13 @@ export class TdxService {
     const url = `https://ptx.transportdata.tw/MOTC/v2/Tourism/Restaurant?${params}&$spatialFilter=nearby(${geoParam})&$format=JSON`;
     return this.get(url);
   }
+
+  getDirections(lat1: number, lon1: number, lat2: number, lon2: number): Observable<any> {
+    const origin = encodeURI(`${lat1},${lon1}`);
+    const destination = encodeURI(`${lat2},${lon2}`);
+    const mode = 'bicycling';
+    const url = `https://maps.googleapis.com/maps/api/directions/json?origin=${origin}&destination=${destination}&mode=${mode}&key=${this.gmapKey}`;
+    return this.http.get(url);
+  }
+
 }
