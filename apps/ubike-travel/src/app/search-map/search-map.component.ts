@@ -14,6 +14,13 @@ import food from '@iconify/icons-fluent/food-16-filled';
 import mapMarker from '@iconify/icons-fontisto/map-marker-alt';
 import clockIcon from '@iconify/icons-akar-icons/clock';
 
+interface ScenicSpotTourismInfoExt extends ScenicSpotTourismInfo {
+  distance?: number;
+}
+interface RestaurantTourismInfoExt extends RestaurantTourismInfo {
+  distance?: number;
+}
+
 @Component({
   selector: 'hexschool-f2e-search-map',
   templateUrl: './search-map.component.html',
@@ -51,8 +58,8 @@ export class SearchMapComponent implements OnInit, OnDestroy {
   foodIcon = food;
   mapMarkerIcon = mapMarker;
   clockIcon = clockIcon;
-  attractions: ScenicSpotTourismInfo[] = [];
-  restaurants: RestaurantTourismInfo[] = [];
+  attractions: ScenicSpotTourismInfoExt[] = [];
+  restaurants: RestaurantTourismInfoExt[] = [];
 
   constructor(
     private service: TdxService,
@@ -220,10 +227,36 @@ export class SearchMapComponent implements OnInit, OnDestroy {
 
   exploreNearby(): void {
     this.service.fetchAttractionNearBy(this.lat, this.lng, 5000).subscribe(res => {
-      this.attractions = res;
+      this.attractions = res
+        .map((item: ScenicSpotTourismInfoExt) => {
+          item.distance = this.countDistance(this.lat, this.lng, item.Position.PositionLat || 0, item.Position.PositionLon || 0);
+          return item;
+        })
+        .sort((a, b) => {
+          if (a.distance && b.distance) {
+            if (a.distance > b.distance) { return 1; }
+            if (a.distance < b.distance) { return -1; }
+            return 0;
+          } else {
+            return 0;
+          }
+        });
     });
     this.service.fetchRestaurantNearBy(this.lat, this.lng, 5000).subscribe(res => {
-      this.restaurants = res;
+      this.restaurants = res
+        .map((item: RestaurantTourismInfoExt) => {
+          item.distance = this.countDistance(this.lat, this.lng, item.Position.PositionLat || 0, item.Position.PositionLon || 0);
+          return item;
+        })
+        .sort((a, b) => {
+          if (a.distance && b.distance) {
+            if (a.distance > b.distance) { return 1; }
+            if (a.distance < b.distance) { return -1; }
+            return 0;
+          } else {
+            return 0;
+          }
+        });
     });
   }
 
@@ -235,5 +268,29 @@ export class SearchMapComponent implements OnInit, OnDestroy {
   getRestaurantImage(spot: RestaurantTourismInfo): string {
     const url = spot && spot.Picture && spot.Picture.PictureUrl1 ? spot.Picture.PictureUrl1 : './assets/default_spot.jpg';
     return `url(${url})`;
+  }
+
+  /**
+   * 計算距離，單位公尺
+   */
+  countDistance(lat1: number, lon1: number, lat2: number, lon2: number) {
+    if ((lat1 == lat2) && (lon1 == lon2)) {
+      return 0;
+    }
+    else {
+      const radlat1 = Math.PI * lat1 / 180;
+      const radlat2 = Math.PI * lat2 / 180;
+      const theta = lon1 - lon2;
+      const radtheta = Math.PI * theta / 180;
+      let dist = Math.sin(radlat1) * Math.sin(radlat2) + Math.cos(radlat1) * Math.cos(radlat2) * Math.cos(radtheta);
+      if (dist > 1) {
+        dist = 1;
+      }
+      dist = Math.acos(dist);
+      dist = dist * 180 / Math.PI;
+      dist = dist * 60 * 1.1515;
+      dist = dist * 1.609344 * 1000;
+      return Math.floor(dist);
+    }
   }
 }

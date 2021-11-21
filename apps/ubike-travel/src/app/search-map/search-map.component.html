@@ -101,17 +101,17 @@
         </ng-template>
         <div class="tab-content attractions">
           <ng-container *ngFor="let item of attractions">
-            <div class="spot-container flex h-10rem p-2">
+            <div class="spot-container flex h-11rem p-2 line-height-3">
               <div class="spot-image h-full flex-1 mr-2" [style.background-image]="getAttractionImage(item)"></div>
               <div class="spot-info flex-1">
                 <div class="spot-name mb-2">{{ item.Name }}</div>
                 <div class="spot-distance text-yellow-500 flex mb-2">
                   <ic-icon [icon]="mapMarkerIcon" class="mr-2"></ic-icon>
-                  <div>距離 400 m</div>
+                  <div>距離 {{ item.distance }} m</div>
                 </div>
                 <div class="spot-time text-gray-400 flex mb-2">
                   <ic-icon [icon]="clockIcon" class="mr-2"></ic-icon>
-                  <div>08:00 ~ 20:00</div>
+                  <div class="spot-open-time">{{ item.OpenTime }}</div>
                 </div>
               </div>
             </div>
@@ -127,17 +127,17 @@
         </ng-template>
         <div class="tab-content restaurants">
           <ng-container *ngFor="let item of restaurants">
-            <div class="spot-container flex h-10rem p-2">
+            <div class="spot-container flex h-11rem p-2 line-height-3">
               <div class="spot-image h-full flex-1 mr-2" [style.background-image]="getRestaurantImage(item)"></div>
               <div class="spot-info flex-1">
                 <div class="spot-name mb-2">{{ item.Name }}</div>
                 <div class="spot-distance text-yellow-500 flex mb-2">
                   <ic-icon [icon]="mapMarkerIcon" class="mr-2"></ic-icon>
-                  <div>距離 400 m</div>
+                  <div>距離 {{ item.distance }} m</div>
                 </div>
                 <div class="spot-time text-gray-400 flex mb-2">
                   <ic-icon [icon]="clockIcon" class="mr-2"></ic-icon>
-                  <div>08:00 ~ 20:00</div>
+                  <div class="spot-open-time">{{ item.OpenTime }}</div>
                 </div>
               </div>
             </div>

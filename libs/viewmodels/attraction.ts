@@ -49,7 +49,7 @@ export interface RestaurantTourismInfo {
   OpenTime?: string;                // 營業時間
   WebsiteUrl?: string;              // 店家網站網址
   Picture?: TourismPicture;         // 店家照片
-  Position?: PointType;             // 店家位置
+  Position: PointType;              // 店家位置
   Class?: string;                   // 店家分類
   MapUrl?: string;                  // 店家地圖/簡圖介紹網址 
   ParkingInfo?: string;             // 停車資訊
