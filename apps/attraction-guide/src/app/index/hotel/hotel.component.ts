@@ -75,7 +75,7 @@ export class HotelComponent implements OnInit {
   }
 
   onMoreClick(attraction: HotelTourismInfo | null): void {
-    this.service.restaurant = attraction || this.service.restaurant;
+    this.service.hotel = attraction || this.service.hotel;
     this.router.navigate(['hotel-info', attraction ? attraction.ID : 0]);
   }
 }
