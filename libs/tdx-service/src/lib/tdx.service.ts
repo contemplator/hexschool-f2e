@@ -3,7 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import * as crypto from 'crypto-js';
 import * as moment from 'moment';
-import { BikeStation, BikeAvailability, BikeShape } from '../../../viewmodels';
+import { BikeStation, BikeAvailability, BikeShape, ScenicSpotTourismInfo, RestaurantTourismInfo } from '../../../viewmodels';
 
 @Injectable({
   providedIn: 'root'
@@ -70,6 +70,20 @@ export class TdxService {
     const params = this.parsePureCharParams({ $top, $skip });
     const geoParam = `${lat}%2C${lng}%2C${range}`;
     const url = `https://ptx.transportdata.tw/MOTC/v2/Bike/Availability/NearBy?${params}&$spatialFilter=nearby(${geoParam})&$format=JSON`;
+    return this.get(url);
+  }
+
+  fetchAttractionNearBy(lat: number, lng: number, range = 1000, $top = 30, $skip = 0): Observable<ScenicSpotTourismInfo[]> {
+    const params = this.parsePureCharParams({ $top, $skip });
+    const geoParam = `${lat}%2C${lng}%2C${range}`;
+    const url = `https://ptx.transportdata.tw/MOTC/v2/Tourism/ScenicSpot?${params}&$spatialFilter=nearby(${geoParam})&$format=JSON`;
+    return this.get(url);
+  }
+
+  fetchRestaurantNearBy(lat: number, lng: number, range = 1000, $top = 30, $skip = 0): Observable<RestaurantTourismInfo[]> {
+    const params = this.parsePureCharParams({ $top, $skip });
+    const geoParam = `${lat}%2C${lng}%2C${range}`;
+    const url = `https://ptx.transportdata.tw/MOTC/v2/Tourism/Restaurant?${params}&$spatialFilter=nearby(${geoParam})&$format=JSON`;
     return this.get(url);
   }
 }

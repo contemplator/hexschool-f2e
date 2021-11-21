@@ -1,8 +1,32 @@
-.map{
-  ::ng-deep{
+.map {
+  ::ng-deep {
     .gm-svpc,
-    .gmnoprint{
+    .gmnoprint {
       display: none;
     }
   }
+}
+
+.explore-footer {
+  ::ng-deep .p-tabview-nav {
+    margin-left: 3rem;
+  }
+  ::ng-deep .p-tabview .p-tabview-nav li.p-highlight .p-tabview-nav-link {
+    background-color: var(--primary-color);
+  }
+  ::ng-deep .p-tabview .p-tabview-panels {
+    padding: 0;
+  }
+}
+
+.tab-content {
+  height: calc(16rem - 3rem);
+}
+
+.spot-image {
+  background-size: cover;
+}
+
+.tab-content {
+  overflow: auto;
 }

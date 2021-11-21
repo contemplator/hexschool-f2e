@@ -25,12 +25,13 @@
         <ng-template let-station pTemplate="selectedItem">
           {{ station.label }}
         </ng-template>
+        <agm-bicycling-layer *ngIf="showBicycling"></agm-bicycling-layer>
       </p-autoComplete>
       <ic-icon [icon]="timesIcon" [size]="'2rem'" class="text-gray-500 ml-1"></ic-icon>
     </div>
   </div>
 
-  <div class="footer w-screen flex align-items-center justify-content-center bg-primary fixed bottom-0 left-0 p-3 text-lg" (click)="onNearSearchClick()">
+  <div class="footer w-screen flex align-items-center justify-content-center bg-primary fixed bottom-0 left-0 p-3 text-lg">
     <img alt="bike-site-icon" src="./assets/icons-07.png" class="h-2rem mr-2">
     <div>尋找附近站/點</div>
   </div>
@@ -63,13 +64,13 @@
     </div>
   </div>
 
-  <div class="footer w-screen flex align-items-center bg-primary fixed bottom-0 left-0 p-3">
+  <div class="footer w-screen flex align-items-center bg-primary fixed bottom-0 left-0 p-3" *ngIf="exploreMode === false">
     <ng-container *ngIf="startTime === false">
       <div class="btn-rent flex-1 text-center text-lg flex align-items-center justify-content-center" (click)="onTimeClick()">
         <img alt="btn-rent-icon" src="./assets/icons-05.png" class="mr-2 h-2rem">
         <div>開始租借</div>
       </div>
-      <div class="btn-explore flex-1 text-center text-lg flex align-items-center justify-content-center">
+      <div class="btn-explore flex-1 text-center text-lg flex align-items-center justify-content-center" (click)="onExploreNearClick()">
         <img alt="btn-explore-icon" src="./assets/icons-07.png" class="mr-2 h-2rem">
         <div>探索附近</div>
       </div>
@@ -84,5 +85,65 @@
         <div>停止計時</div>
       </div>
     </ng-container>
+  </div>
+
+  <div class="explore-footer w-screen h-16rem fixed bottom-0 left-0" *ngIf="exploreMode === true">
+    <div class="btn-close-explore w-3rem h-3rem bg-white absolute" [style.z-index]="1003">
+      <ic-icon [icon]="arrowIosBackIcon" [size]="'3rem'" class="" (click)="onCloseExploreClick()"></ic-icon>
+    </div>
+    <p-tabView>
+      <p-tabPanel header="景點">
+        <ng-template pTemplate="header">
+          <div class="flex mx-auto justify-content-between align-items-center">
+            <ic-icon class="mr-1 mt-1" [icon]="attractionIcon"></ic-icon>
+            <span class="font-normal">景點</span>
+          </div>
+        </ng-template>
+        <div class="tab-content attractions">
+          <ng-container *ngFor="let item of attractions">
+            <div class="spot-container flex h-10rem p-2">
+              <div class="spot-image h-full flex-1 mr-2" [style.background-image]="getAttractionImage(item)"></div>
+              <div class="spot-info flex-1">
+                <div class="spot-name mb-2">{{ item.Name }}</div>
+                <div class="spot-distance text-yellow-500 flex mb-2">
+                  <ic-icon [icon]="mapMarkerIcon" class="mr-2"></ic-icon>
+                  <div>距離 400 m</div>
+                </div>
+                <div class="spot-time text-gray-400 flex mb-2">
+                  <ic-icon [icon]="clockIcon" class="mr-2"></ic-icon>
+                  <div>08:00 ~ 20:00</div>
+                </div>
+              </div>
+            </div>
+          </ng-container>
+        </div>
+      </p-tabPanel>
+      <p-tabPanel header="美食">
+        <ng-template pTemplate="header">
+          <div class="flex mx-auto justify-content-between align-items-center">
+            <ic-icon class="mr-1 mt-1" [icon]="foodIcon"></ic-icon>
+            <span class="font-normal">美食</span>
+          </div>
+        </ng-template>
+        <div class="tab-content restaurants">
+          <ng-container *ngFor="let item of restaurants">
+            <div class="spot-container flex h-10rem p-2">
+              <div class="spot-image h-full flex-1 mr-2" [style.background-image]="getRestaurantImage(item)"></div>
+              <div class="spot-info flex-1">
+                <div class="spot-name mb-2">{{ item.Name }}</div>
+                <div class="spot-distance text-yellow-500 flex mb-2">
+                  <ic-icon [icon]="mapMarkerIcon" class="mr-2"></ic-icon>
+                  <div>距離 400 m</div>
+                </div>
+                <div class="spot-time text-gray-400 flex mb-2">
+                  <ic-icon [icon]="clockIcon" class="mr-2"></ic-icon>
+                  <div>08:00 ~ 20:00</div>
+                </div>
+              </div>
+            </div>
+          </ng-container>
+        </div>
+      </p-tabPanel>
+    </p-tabView>
   </div>
 </div>

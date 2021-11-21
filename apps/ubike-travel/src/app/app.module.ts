@@ -19,6 +19,7 @@ import { AgmCoreModule } from '@agm/core';
 import { ToastModule } from 'primeng/toast';
 import { MessageService } from 'primeng/api';
 import { DecimalPipe } from '@angular/common';
+import { TabViewModule } from 'primeng/tabview';
 
 @NgModule({
   declarations: [AppComponent, SearchMapComponent, IndexComponent],
@@ -39,7 +40,8 @@ import { DecimalPipe } from '@angular/common';
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyABCnBx0dgze3XWV51Ejp42sKWQjo64pco'
     }),
-    ToastModule
+    ToastModule,
+    TabViewModule
   ],
   providers: [
     TdxService,

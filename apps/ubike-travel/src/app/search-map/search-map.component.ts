@@ -5,10 +5,14 @@ import timesIcon from '@iconify/icons-prime/times';
 import { forkJoin, Subject } from 'rxjs';
 import { debounceTime } from 'rxjs/operators';
 import { TdxService } from '../../../../../libs/tdx-service/src/lib/tdx.service';
-import { SelectItem, AutoCompleteSearchEvent, BikeStationInfo, ToastMsg, SeverityEnum, BikeStation } from '../../../../../libs/viewmodels';
+import { SelectItem, AutoCompleteSearchEvent, BikeStationInfo, ToastMsg, SeverityEnum, BikeStation, ScenicSpotTourismInfo, RestaurantTourismInfo } from '../../../../../libs/viewmodels';
 import { MessageService } from 'primeng/api';
 import * as moment from 'moment';
 import { DecimalPipe } from '@angular/common';
+import attraction from '@iconify/icons-maki/attraction';
+import food from '@iconify/icons-fluent/food-16-filled';
+import mapMarker from '@iconify/icons-fontisto/map-marker-alt';
+import clockIcon from '@iconify/icons-akar-icons/clock';
 
 @Component({
   selector: 'hexschool-f2e-search-map',
@@ -39,6 +43,16 @@ export class SearchMapComponent implements OnInit, OnDestroy {
   userLat = this.lat;
   userLng = this.lng;
   searchSelectedStation?: SelectItem;
+  // 顯示腳踏車道
+  showBicycling = false;
+  // 探索附近
+  exploreMode = false;
+  attractionIcon = attraction;
+  foodIcon = food;
+  mapMarkerIcon = mapMarker;
+  clockIcon = clockIcon;
+  attractions: ScenicSpotTourismInfo[] = [];
+  restaurants: RestaurantTourismInfo[] = [];
 
   constructor(
     private service: TdxService,
@@ -121,7 +135,6 @@ export class SearchMapComponent implements OnInit, OnDestroy {
         resolve(true);
       });
     });
-
   }
 
   onMapChange(event: { lat: number, lng: number }): void {
@@ -194,5 +207,33 @@ export class SearchMapComponent implements OnInit, OnDestroy {
 
   onNearSearchClick(): void {
     this.getCurrentLocation();
+  }
+
+  onExploreNearClick(): void {
+    this.exploreMode = true;
+    this.exploreNearby();
+  }
+
+  onCloseExploreClick(): void {
+    this.exploreMode = false;
+  }
+
+  exploreNearby(): void {
+    this.service.fetchAttractionNearBy(this.lat, this.lng, 5000).subscribe(res => {
+      this.attractions = res;
+    });
+    this.service.fetchRestaurantNearBy(this.lat, this.lng, 5000).subscribe(res => {
+      this.restaurants = res;
+    });
+  }
+
+  getAttractionImage(spot: ScenicSpotTourismInfo): string {
+    const url = spot && spot.Picture && spot.Picture.PictureUrl1 ? spot.Picture.PictureUrl1 : './assets/default_spot.jpg';
+    return `url(${url})`;
+  }
+
+  getRestaurantImage(spot: RestaurantTourismInfo): string {
+    const url = spot && spot.Picture && spot.Picture.PictureUrl1 ? spot.Picture.PictureUrl1 : './assets/default_spot.jpg';
+    return `url(${url})`;
   }
 }
