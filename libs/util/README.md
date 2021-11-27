@@ -1,7 +1,7 @@
-# tdx-service
+# util
 
 This library was generated with [Nx](https://nx.dev).
 
 ## Running unit tests
 
-Run `nx test tdx-service` to execute the unit tests.
+Run `nx test util` to execute the unit tests.

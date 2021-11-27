@@ -156,6 +156,132 @@
       "tags": [],
       "implicitDependencies": ["attraction-guide"]
     },
+    "bus-go": {
+      "projectType": "application",
+      "root": "apps/bus-go",
+      "sourceRoot": "apps/bus-go/src",
+      "prefix": "hexschool-f2e",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "outputs": ["{options.outputPath}"],
+          "options": {
+            "outputPath": "dist/apps/bus-go",
+            "index": "apps/bus-go/src/index.html",
+            "main": "apps/bus-go/src/main.ts",
+            "polyfills": "apps/bus-go/src/polyfills.ts",
+            "tsConfig": "apps/bus-go/tsconfig.app.json",
+            "inlineStyleLanguage": "scss",
+            "assets": ["apps/bus-go/src/favicon.ico", "apps/bus-go/src/assets"],
+            "styles": [
+              "node_modules/normalize.css/normalize.css",
+              "node_modules/primeicons/primeicons.css",
+              "node_modules/primeng/resources/themes/bootstrap4-light-blue/theme.css",
+              "node_modules/primeng/resources/primeng.min.css",
+              "node_modules/primeflex/primeflex.css",
+              "apps/bus-go/src/styles.scss"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kb",
+                  "maximumError": "1mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "2kb",
+                  "maximumError": "4kb"
+                }
+              ],
+              "fileReplacements": [
+                {
+                  "replace": "apps/bus-go/src/environments/environment.ts",
+                  "with": "apps/bus-go/src/environments/environment.prod.ts"
+                }
+              ],
+              "outputHashing": "all"
+            },
+            "development": {
+              "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "configurations": {
+            "production": {
+              "browserTarget": "bus-go:build:production"
+            },
+            "development": {
+              "browserTarget": "bus-go:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "bus-go:build"
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "apps/bus-go/src/**/*.ts",
+              "apps/bus-go/src/**/*.html"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/apps/bus-go"],
+          "options": {
+            "jestConfig": "apps/bus-go/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      },
+      "tags": []
+    },
+    "bus-go-e2e": {
+      "root": "apps/bus-go-e2e",
+      "sourceRoot": "apps/bus-go-e2e/src",
+      "projectType": "application",
+      "architect": {
+        "e2e": {
+          "builder": "@nrwl/cypress:cypress",
+          "options": {
+            "cypressConfig": "apps/bus-go-e2e/cypress.json",
+            "devServerTarget": "bus-go:serve:development"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "bus-go:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "outputs": ["{options.outputFile}"],
+          "options": {
+            "lintFilePatterns": ["apps/bus-go-e2e/**/*.{js,ts}"]
+          }
+        }
+      },
+      "tags": [],
+      "implicitDependencies": ["bus-go"]
+    },
     "hexschool-f2e": {
       "projectType": "application",
       "root": "apps/hexschool-f2e",
@@ -456,6 +582,32 @@
           "builder": "@nrwl/linter:eslint",
           "options": {
             "lintFilePatterns": ["libs/ui/src/**/*.ts", "libs/ui/src/**/*.html"]
+          }
+        }
+      },
+      "tags": []
+    },
+    "util": {
+      "projectType": "library",
+      "root": "libs/util",
+      "sourceRoot": "libs/util/src",
+      "prefix": "hexschool-f2e",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/util"],
+          "options": {
+            "jestConfig": "libs/util/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/util/src/**/*.ts",
+              "libs/util/src/**/*.html"
+            ]
           }
         }
       },

@@ -1,0 +1,27 @@
+/* You can add global styles to this file, and also import other style files */
+:root {
+  --text-color: #4f4f4f;
+  --text-color-secondary: #bdbdbd;
+  --primary-color: #79401c;
+  --primary-color-text: #ffffff;
+  --border-radius: 8px;
+  --orange-900: #79401c;
+  --gray-100: #f9f3ed;
+  --gray-400: #bdbdbd;
+  --gray-500: #c4a88e;
+  --gray-600: #999a9c;
+}
+* {
+  box-sizing: border-box;
+  color: var(--primary-color);
+}
+
+button {
+  background-color: transparent;
+}
+
+.position-center {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}

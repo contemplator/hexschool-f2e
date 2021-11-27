@@ -1,0 +1,13 @@
+<div class="w-screen h-screen bg-cover" [style.background-image]="'url(\'./assets/background-full.png\')'">
+  <div class="absolute text-center position-center" [style.width]="'80vw'">
+    <div class="cities-container bg-primary border-0 border-round grid px-2 pt-2">
+      <div class="city col-3" *ngFor="let city of cities">
+        <button class="p-2 border-1 border-round border-white" [ngClass]="{'bg-white text-primary': city.value === selectedCity, 'text-white bg-primary': city.value !== selectedCity }" (click)="onCityClick(city)">{{ city.label }}</button>
+      </div>
+      <div class="city col-6">
+        <button class="p-2 border-1 border-round border-white text-white bg-primary w-full" (click)="onSendClick()">送出</button>
+      </div>
+    </div>
+    
+  </div>
+</div>

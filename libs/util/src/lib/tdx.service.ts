@@ -3,7 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import * as crypto from 'crypto-js';
 import * as moment from 'moment';
-import { BikeStation, BikeAvailability, BikeShape, ScenicSpotTourismInfo, RestaurantTourismInfo } from '../../../viewmodels';
+import { BikeStation, BikeAvailability, BikeShape, ScenicSpotTourismInfo, RestaurantTourismInfo, BusNews, BusStation, BusStopOfRoute, BusRoute } from '../../../viewmodels';
 
 @Injectable({
   providedIn: 'root'
@@ -95,4 +95,26 @@ export class TdxService {
     return this.http.get(url);
   }
 
+  fetchBusNews(): Observable<BusNews[]> {
+    const url = `https://ptx.transportdata.tw/MOTC/v2/Bus/News/InterCity?$top=10&$format=JSON`;
+    return this.get(url);
+  }
+
+  searchBusStop(city: string, keyword: string, $top = 30, $skip = 0): Observable<BusStation[]> {
+    const params = this.parsePureCharParams({ $top, $skip });
+    const url = `https://ptx.transportdata.tw/MOTC/v2/Bus/Stop/City/${city}?${params}&$filter=contains(StopName/Zh_tw, '${keyword}')&$format=JSON`;
+    return this.get(url);
+  }
+
+  searchBusRoute(city: string, keyword: string, $top = 300, $skip = 0): Observable<BusRoute[]> {
+    const params = this.parsePureCharParams({ $top, $skip });
+    const url = `https://ptx.transportdata.tw/MOTC/v2/Bus/Route/City/${city}?${params}&$filter=contains(RouteName/Zh_tw, '${keyword}')&$format=JSON`;
+    return this.get(url);
+  }
+
+  searchBusStopWithRoute(city: string, keyword: string, $top = 300, $skip = 0): Observable<BusStopOfRoute[]> {
+    const params = this.parsePureCharParams({ $top, $skip });
+    const url = `https://ptx.transportdata.tw/MOTC/v2/Bus/StopOfRoute/City/${city}?${params}&$filter=Stops/any(d:(contains(d/StopName/Zh_tw, '${keyword}') eq true))&$format=JSON`;
+    return this.get(url);
+  }
 }

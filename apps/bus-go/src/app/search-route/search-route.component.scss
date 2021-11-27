@@ -1,0 +1,12 @@
+.input-keyword {
+  border-radius: 1rem;
+  border-width: 0;
+  &:focus {
+    outline: none;
+  }
+}
+
+.route-list{
+  height: calc(100vh - 3rem - 4rem);
+  overflow: auto;
+}

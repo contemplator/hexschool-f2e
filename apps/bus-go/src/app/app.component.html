@@ -1,0 +1,13 @@
+<header *ngIf="showHeader()" class="flex align-items-center justify-content-between w-screen h-3rem px-2 relative shadow-2">
+  <i class="pi pi-angle-left text-2xl cursor-pointer" (click)="onBackClick()"></i>
+  <div class="title text-2xl">{{ title }}</div>
+  <div class="actions inline-flex">
+    <i class="pi pi-map text-2xl cursor-pointer" (click)="onMapClick()"></i>
+  </div>
+</header>
+
+<div class="content">
+  <router-outlet></router-outlet>
+</div>
+
+<p-toast [position]="'bottom-center'"></p-toast>

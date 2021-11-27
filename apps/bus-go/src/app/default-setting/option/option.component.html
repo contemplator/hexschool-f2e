@@ -1,0 +1,15 @@
+<div class="w-screen h-screen bg-cover" [style.background-image]="'url(\'./assets/background-full.png\')'">
+  <div class="absolute w-screen text-center position-center">
+    <div class="bus mb-4">
+      <img alt="bus" src="./assets/bus.png">
+    </div>
+    <div class="options inline-flex">
+      <button class="border-2 border-round border-primary px-5 py-3 mr-2 text-primary" (click)="onCityClick()">
+        查詢縣/市
+      </button>
+      <button class="border-2 border-round border-primary px-5 py-3 text-primary" (click)="onPositionClick()">
+        開啟定位
+      </button>
+    </div>
+  </div>
+</div>

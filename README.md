@@ -103,3 +103,26 @@ Nx Cloud pairs with Nx in order to enable you to build and test code more rapidl
 Teams using Nx gain the advantage of building full-stack applications with their preferred framework alongside Nx’s advanced code generation and project dependency graph, plus a unified experience for both frontend and backend developers.
 
 Visit [Nx Cloud](https://nx.app/) to learn more.
+
+# Ubike Travel
+
+## 使用技術
+
+Angular、Google Maps、SCSS
+
+## 線上觀看連結
+
+https://contemplator.github.io/hexschool-f2e-ubike/search-map
+
+## 原始檔位置
+
+https://github.com/contemplator/hexschool-f2e
+
+## 作品描述
+
+首頁透過搜尋站點或直接顯示附近站點開始查詢想要的 Ubike 站。
+
+提供以下功能：
+
+1. 租借時間的計時
+2. 探索目前使用者附近的美食與景點

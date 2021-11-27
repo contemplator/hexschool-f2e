@@ -4,7 +4,8 @@ import arrowIosBackIcon from '@iconify/icons-eva/arrow-ios-back-fill';
 import timesIcon from '@iconify/icons-prime/times';
 import { forkJoin, Subject } from 'rxjs';
 import { debounceTime } from 'rxjs/operators';
-import { TdxService } from '../../../../../libs/tdx-service/src/lib/tdx.service';
+import { TdxService } from '../../../../../libs/util';
+// eslint-disable-next-line @nrwl/nx/enforce-module-boundaries
 import { SelectItem, AutoCompleteSearchEvent, BikeStationInfo, ToastMsg, SeverityEnum, BikeStation, ScenicSpotTourismInfo, RestaurantTourismInfo } from '../../../../../libs/viewmodels';
 import { MessageService } from 'primeng/api';
 import * as moment from 'moment';
@@ -13,7 +14,6 @@ import attraction from '@iconify/icons-maki/attraction';
 import food from '@iconify/icons-fluent/food-16-filled';
 import mapMarker from '@iconify/icons-fontisto/map-marker-alt';
 import clockIcon from '@iconify/icons-akar-icons/clock';
-import { Client, TravelMode } from "@googlemaps/google-maps-services-js";
 
 interface ScenicSpotTourismInfoExt extends ScenicSpotTourismInfo {
   distance?: number;
@@ -173,25 +173,25 @@ export class SearchMapComponent implements OnInit, OnDestroy {
     //   })
     // });
 
-    const client = new Client({});
-    client.directions({
-      params: {
-        origin: [this.userLat, this.userLng],
-        destination: [this.nextSpotLat, this.nextSpotLon],
-        mode: TravelMode.bicycling,
-        key: 'AIzaSyABCnBx0dgze3XWV51Ejp42sKWQjo64pco'
-      }
-    }).then(res => {
-      console.info(res);
-    }).catch(error => {
-      console.error(error);
-    });
+    // const client = new Client({});
+    // client.directions({
+    //   params: {
+    //     origin: [this.userLat, this.userLng],
+    //     destination: [this.nextSpotLat, this.nextSpotLon],
+    //     mode: TravelMode.bicycling,
+    //     key: 'AIzaSyABCnBx0dgze3XWV51Ejp42sKWQjo64pco'
+    //   }
+    // }).then(res => {
+    //   console.info(res);
+    // }).catch(error => {
+    //   console.error(error);
+    // });
 
     // this.paths = [
     //   { lat: this.userLat, lng: this.userLng },
     //   { lat: this.nextSpotLat, lng: this.nextSpotLon },
     // ]
-    console.info(this.userLat, this.userLng, this.nextSpotLat, this.nextSpotLon);
+    // console.info(this.userLat, this.userLng, this.nextSpotLat, this.nextSpotLon);
   }
 
   getCurrentLocation(): void {

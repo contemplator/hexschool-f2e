@@ -11,7 +11,8 @@ import { AutoCompleteModule } from 'primeng/autocomplete';
 import { FormsModule } from '@angular/forms';
 import { DropdownModule } from 'primeng/dropdown';
 import { HttpClientModule } from '@angular/common/http';
-import { TdxService } from '../../../../libs/tdx-service/src/lib/tdx.service';
+// eslint-disable-next-line @nrwl/nx/enforce-module-boundaries
+import { TdxService } from '../../../../libs/util';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SearchMapComponent } from './search-map/search-map.component';
 import { IndexComponent } from './index/index.component';
@@ -20,6 +21,7 @@ import { ToastModule } from 'primeng/toast';
 import { MessageService } from 'primeng/api';
 import { DecimalPipe } from '@angular/common';
 import { TabViewModule } from 'primeng/tabview';
+import { AgmDirectionModule } from 'agm-direction';   // agm-direction
 
 @NgModule({
   declarations: [AppComponent, SearchMapComponent, IndexComponent],
@@ -40,6 +42,7 @@ import { TabViewModule } from 'primeng/tabview';
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyABCnBx0dgze3XWV51Ejp42sKWQjo64pco'
     }),
+    AgmDirectionModule,
     ToastModule,
     TabViewModule
   ],

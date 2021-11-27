@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { TdxService } from '../../../../../libs/tdx-service/src/lib/tdx.service';
+import { TdxService } from '../../../../../libs/util';
 import { UbikeCityData } from '../../../../../libs/data/index';
 // eslint-disable-next-line @nrwl/nx/enforce-module-boundaries
 import { SelectItem, AutoCompleteSearchEvent, BikeStation } from '../../../../../libs/viewmodels';

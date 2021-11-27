@@ -1,0 +1,15 @@
+<div class="search-field bg-gray-500 p-3">
+  <div class="input-field relative h-2rem">
+    <input type="text" [(ngModel)]="searchKeyword" (ngModelChange)="searchStop()" class="input-keyword border-0 w-full py-2 pl-3 pr-12">
+    <div class="city-hint absolute" [style.top]="'.5rem'" [style.right]="'1rem'">
+      <i class="pi pi-map-marker"></i>
+      {{ cityName }}
+    </div>
+  </div>
+</div>
+<div class="stop-list">
+  <div class="stop-row px-4 py-2" [ngClass]="{'bg-gray-100': i%2===1}" *ngFor="let stop of stops; let i=index">
+    <div class="stop-name line-height-3" [innerHTML]="stop.StopName | highlight : searchKeyword"></div>
+    <div class="stop-routes line-height-3">{{ getStopRoutes(stop) }}</div>
+  </div>
+</div>

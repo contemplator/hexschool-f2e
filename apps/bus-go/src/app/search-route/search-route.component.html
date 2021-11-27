@@ -1,0 +1,20 @@
+<div class="search-field bg-gray-500 p-3">
+  <div class="input-field relative h-2rem">
+    <input type="text" [(ngModel)]="searchKeyword" (ngModelChange)="searchRoute()" class="input-keyword border-0 w-full py-2 pl-3 pr-12">
+    <div class="city-hint absolute" [style.top]="'.5rem'" [style.right]="'1rem'">
+      <i class="pi pi-map-marker"></i>
+      {{ cityName }}
+    </div>
+  </div>
+</div>
+<div class="route-list">
+  <div class="route-row px-4 py-2 flex" [ngClass]="{'bg-gray-100': i%2===1}" *ngFor="let route of routes; let i=index">
+    <div class="route-name w-6rem mr-1">
+      <div class="inline-block white-space-nowrap overflow-hidden text-overflow-ellipsis border-1 border-round border-primary px-1 max-w-full">
+        {{ route.RouteName.Zh_tw }}
+      </div>
+    </div>
+    <div class="route-start white-space-nowrap flex-1 mr-1">{{ route.DepartureStopNameZh }}</div>
+    <div class="route-end white-space-nowrap flex-1">{{ route.DestinationStopNameZh }}</div>
+  </div>
+</div>

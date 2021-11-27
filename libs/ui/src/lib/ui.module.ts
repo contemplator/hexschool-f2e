@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { SearchInputComponent } from './search-input/search-input.component';
 import { IconModule } from '@visurel/iconify-angular';
+import { HighlightPipe } from './highlight.pipe';
 
 @NgModule({
   imports: [
@@ -11,10 +12,12 @@ import { IconModule } from '@visurel/iconify-angular';
     IconModule
   ],
   declarations: [
-    SearchInputComponent
+    SearchInputComponent,
+    HighlightPipe
   ],
   exports: [
-    SearchInputComponent
+    SearchInputComponent,
+    HighlightPipe
   ],
 })
 export class UiModule { }

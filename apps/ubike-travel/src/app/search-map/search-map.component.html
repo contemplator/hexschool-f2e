@@ -45,12 +45,14 @@
           <agm-marker [latitude]="item.StationPosition.PositionLat" [longitude]="item.StationPosition.PositionLon" [label]="startTime === false ? item.AvailableRentBikes + '' : item.AvailableReturnBikes + ''" [iconUrl]="item.StationUID === selectedStation.StationUID ? './assets/station-full.png' : './assets/station-empty.png'" (markerClick)="onMarkerClick(item)"></agm-marker>
         </ng-container>
       </ng-container>
-      <agm-marker [latitude]="userLat" [longitude]="userLng"></agm-marker>
+
+      <!-- <agm-marker [latitude]="userLat" [longitude]="userLng"></agm-marker> -->
       <!-- <ng-container *ngIf="userLat !== undefined && userLng !== undefined && nextSpotLat !== undefined && nextSpotLon !== undefined ">
         <agm-polyline-point [latitude]="userLat" [longitude]="userLng"></agm-polyline-point>
         <agm-polyline-point [latitude]="nextSpotLat" [longitude]="nextSpotLon"></agm-polyline-point>
       </ng-container> -->
-      <agm-polygon [paths]="paths"></agm-polygon>
+      <!-- <agm-polygon [paths]="paths"></agm-polygon> -->
+      <agm-direction [origin]="{lat: userLat||0, lng: userLng||0}" [destination]="{lat: nextSpotLat||0, lng: nextSpotLon||0}"></agm-direction>
 
     </agm-map>
   </div>

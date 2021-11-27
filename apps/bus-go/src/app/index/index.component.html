@@ -1,0 +1,35 @@
+<div class="container w-full h-full bg-cover p-4 overflow-auto" [style.background-image]="'url(\'./assets/background-empty.png\')'">
+  <div class="main-hint py-6 text-center">
+    請選擇查詢方式
+  </div>
+  <div class="search-options flex mb-6 justify-content-between">
+    <div class="search-option border-2 border-round border-primary py-2 px-4" (click)="onStopClick()">找站牌</div>
+    <div class="search-option border-2 border-round border-primary py-2 px-4" (click)="onBusRouteClick()">找公車</div>
+    <!-- <div class="search-option border-2 border-round border-primary py-2 px-4">找客運</div> -->
+  </div>
+
+  <div class="banner-field mb-6">
+    <img alt="banner" src="./assets/bus-stop.png" class="w-full">
+  </div>
+
+  <div class="news-field">
+    <div class="news-title flex justify-content-between">
+      <div class="text-lg">最新消息</div>
+      <div class="inline-flex align-items-center">
+        <i class="pi pi-map-marker mr-2"></i>
+        <!-- <div>{{ newsCity }}</div> -->
+      </div>
+    </div>
+    <div class="news-list mt-2">
+      <div class="news-row flex mb-1" *ngFor="let news of newsList">
+        <div class="news-label mr-3">
+          <div class="news-category text-xs border-1 border-round bg-primary text-white px-1 inline-block">{{ getCategoryName(news.NewsCategory) }}</div>
+          <div class="news-date text-sm white-space-nowrap text-gray-500">{{ news.PublishTime | slice:0:10 }}</div>
+        </div>
+        <div class="news-title text-sm flex-1 line-height-2">
+          {{ news.Title }}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
