@@ -9,7 +9,8 @@
     "build": "nx build",
     "test": "nx test",
     "build-attraction": "ng build attraction-guide --prod --base-href=/hexschool-f2e-attraction/",
-    "build-ubike": "ng build ubike-travel --prod --base-href=/hexschool-f2e-ubike/"
+    "build-ubike": "ng build ubike-travel --prod --base-href=/hexschool-f2e-ubike/",
+    "build-bus": "ng build bus-go --prod --base-href=/hexschool-f2e-bus/"
   },
   "private": true,
   "dependencies": {
