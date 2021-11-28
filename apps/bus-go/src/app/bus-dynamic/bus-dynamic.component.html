@@ -1,0 +1,54 @@
+<div class="flex h-full bg-gray-200 px-4" [style.display]="showType !== 1 ? 'none !important' : 'flex'">
+  <div class="route-state border-x-3 border-white h-full w-4rem">
+    <div class="empty-field"></div>
+    <div class="bubble-field">
+      <div class="bubble-list" #bubbleList>
+        <div class="bubble border-1 border-gray-300 bg-gray-200 mb-2" [ngClass]="{'active': stop.StopStatus === 0 && getEstimateTime(stop) <= 1}" *ngFor="let stop of stops"></div>
+      </div>
+    </div>
+  </div>
+  <div class="route-detail py-3 pl-4 w-full">
+    <div class="route-desc border-1 border-round shadow-2 bg-white p-2 w-full relative">
+      <div class="flex">
+        <div class="bus-route-name flex-1 text-center">
+          <div class="route-label text-gray-300 mb-1">公車路線</div>
+          <div class="text-lg">{{ routeName }}</div>
+        </div>
+        <div class="bus-route-direction flex-1 text-center">
+          <div class="route-label text-gray-300 mb-1">往</div>
+          <div class="text-lg white-space-nowrap overflow-hidden text-overflow-ellipsis w-7rem">{{ getDestination() }}</div>
+        </div>
+      </div>
+      <div class="divider border-1 border-gray-500 my-1"></div>
+      <div class="flex align-items-center">
+        <div class="bus-route-end flex-1 text-center">
+          <div class="white-space-nowrap overflow-hidden text-overflow-ellipsis w-7rem">{{ getDeparture() }}</div>
+          <i class="pi pi-arrow-down text-xs text-gray-300"></i>
+          <div class="white-space-nowrap overflow-hidden text-overflow-ellipsis w-7rem">{{ getDestination() }}</div>
+        </div>
+        <div class="bus-route-direction flex-1 text-center">
+          <div class="route-label text-gray-300 mb-3">票價</div>
+          <div class="text-lg">{{ fee | currency:'$ ':true:'0.0' }}</div>
+        </div>
+      </div>
+      <i class="pi pi-reply text-lg absolute" [style.bottom]="'8px'" [style.right]="'8px'" (click)="onChangeRouteClick()"></i>
+    </div>
+    <div class="route-list mt-2" (scroll)="onListScroll($event)" #routeList>
+      <div class="route-stop flex align-items-center mb-2" *ngFor="let stop of stops">
+        <div class="stop-status border-round py-2 px-3 mr-2 white-space-nowrap text-center w-6rem line-height-1" [ngClass]="getBusStopStatusClass(stop)">
+          {{ stop.StopStatus !== 0 ? getStatusName(stop.StopStatus) : getEstimateTime(stop) <= 1 ? '進站中' : getEstimateTime(stop) + ' 分' }} </div>
+            <div class="stop-name">{{ stop.StopName }}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="h-full" [style.display]="showType !== 2 ? 'none !important' : 'block'">
+    <agm-map [latitude]="lat" [longitude]="lng" class="w-full h-full" [zoom]="16" (centerChange)="onMapChange($event)">
+      <ng-container *ngFor="let stop of stops; let i=index">
+        <ng-container *ngIf="stop.lat && stop.lon">
+          <agm-marker [latitude]="stop.lat" [longitude]="stop.lon" [label]="(i + 1) +  ''" [iconUrl]="'./assets/marker.png'"></agm-marker>
+        </ng-container>
+      </ng-container>
+    </agm-map>
+  </div>

@@ -21,7 +21,7 @@
       </div>
     </div>
     <div class="news-list mt-2">
-      <div class="news-row flex mb-1" *ngFor="let news of newsList">
+      <div class="news-row flex mb-1" *ngFor="let news of newsList" (click)="onNewsClick(news)">
         <div class="news-label mr-3">
           <div class="news-category text-xs border-1 border-round bg-primary text-white px-1 inline-block">{{ getCategoryName(news.NewsCategory) }}</div>
           <div class="news-date text-sm white-space-nowrap text-gray-500">{{ news.PublishTime | slice:0:10 }}</div>
@@ -33,3 +33,9 @@
     </div>
   </div>
 </div>
+
+<ng-container *ngIf="selectedNews">
+  <p-dialog [header]="selectedNews.Title" [(visible)]="showNews" [style]="{'max-width': '80vw'}" [modal]="true">
+    {{ selectedNews.Description }}
+  </p-dialog>
+</ng-container>

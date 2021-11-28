@@ -22,7 +22,7 @@ export class AppComponent implements OnInit {
     const city = this.cookieService.getCookie('bus_go_city');
     if (!firstOpen || firstOpen === 'true' || !city) {
       this.router.navigate(['default-setting']);
-    }else{
+    } else {
       this.service.city = city;
     }
   }
@@ -31,11 +31,32 @@ export class AppComponent implements OnInit {
     return location.href.indexOf('default-setting') > -1 ? false : true;
   }
 
-  onBackClick(): void {
-    console.info('back');
+  onCitySettingClick(): void {
+    this.router.navigate(['default-setting', 'cities']);
   }
 
-  onMapClick(): void {
-    console.info('map');
+  showBack(): boolean {
+    const notShowPath = ['default-setting', 'index'];
+    let result = true;
+    notShowPath.forEach(path => {
+      result = location.href.indexOf(path) > -1 ? false : result;
+    });
+    return result;
+  }
+
+  showSetting(): boolean {
+    return location.href.indexOf('index') > -1;
+  }
+
+  onBackClick(): void {
+    window.history.back();
+  }
+
+  showMap(): boolean {
+    return location.href.indexOf('bus-dynamic') > -1;
+  }
+
+  onMapClick(): void{
+    this.service.toggleDynamicShowType();
   }
 }

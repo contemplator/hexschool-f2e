@@ -1,8 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { AppService } from '../app.service';
-import { CityArrayData } from '../../../../../libs/data';
-import { TdxService } from '../../../../../libs/util';
-import { BusNews, NewsCategoryEnum } from '../../../../../libs/viewmodels';
+// eslint-disable-next-line @nrwl/nx/enforce-module-boundaries
+import { CityArrayData } from 'libs/data';
+// eslint-disable-next-line @nrwl/nx/enforce-module-boundaries
+import { TdxService } from 'libs/util';
+// eslint-disable-next-line @nrwl/nx/enforce-module-boundaries
+import { BusNews, NewsCategoryEnum } from 'libs/viewmodels';
 import { Router } from '@angular/router';
 
 @Component({
@@ -13,6 +16,8 @@ import { Router } from '@angular/router';
 export class IndexComponent implements OnInit {
   newsCity = '';
   newsList: BusNews[] = [];
+  showNews = false;
+  selectedNews?: BusNews;
 
   constructor(
     private service: AppService,
@@ -48,5 +53,12 @@ export class IndexComponent implements OnInit {
 
   onBusRouteClick(): void {
     this.router.navigate(['search-route']);
+  }
+
+  onNewsClick(news: BusNews): void {
+    this.selectedNews = news;
+    setTimeout(() => {
+      this.showNews = true;
+    }, 0);
   }
 }

@@ -1,0 +1,16 @@
+<header class="flex align-items-center justify-content-between w-screen h-3rem px-2 relative shadow-2">
+  <!-- <div class="main-action">
+    <i class="pi pi-angle-left text-2xl cursor-pointer" (click)="onBackClick()" *ngIf="showBack"></i>
+    <i class="pi pi-bars text-2xl cursor-pointer" (click)="onBackClick()" *ngIf="showBack"></i>
+  </div> -->
+  <div class="header-actions">
+    <ng-content select=".header-actions"></ng-content>
+  </div>
+  <div class="title text-2xl flex-1 text-center absolute">{{ title }}</div>
+  <!-- <div class="actions inline-flex">
+    <i class="pi pi-map text-2xl cursor-pointer" (click)="onMapClick()"></i>
+  </div> -->
+  <div class="header-sub-actions">
+    <ng-content select=".header-sub-actions"></ng-content>
+  </div>
+</header>

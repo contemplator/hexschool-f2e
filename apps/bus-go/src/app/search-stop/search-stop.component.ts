@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { TdxService } from '@hexschool-f2e/util';
 // eslint-disable-next-line @nrwl/nx/enforce-module-boundaries
 import { CityArrayData } from 'libs/data';
+// eslint-disable-next-line @nrwl/nx/enforce-module-boundaries
 import { StopWithRoute } from '../../../../../libs/viewmodels';
 import { AppService } from '../app.service';
 

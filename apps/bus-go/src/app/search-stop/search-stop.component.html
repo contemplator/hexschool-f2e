@@ -1,6 +1,6 @@
 <div class="search-field bg-gray-500 p-3">
   <div class="input-field relative h-2rem">
-    <input type="text" [(ngModel)]="searchKeyword" (ngModelChange)="searchStop()" class="input-keyword border-0 w-full py-2 pl-3 pr-12">
+    <input type="text" [(ngModel)]="searchKeyword" (ngModelChange)="searchStop()" class="input-keyword border-0 w-full py-2 pl-3 pr-12" placeholder="請輸入站牌名稱查詢">
     <div class="city-hint absolute" [style.top]="'.5rem'" [style.right]="'1rem'">
       <i class="pi pi-map-marker"></i>
       {{ cityName }}

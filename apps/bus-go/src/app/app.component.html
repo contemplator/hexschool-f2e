@@ -1,12 +1,15 @@
-<header *ngIf="showHeader()" class="flex align-items-center justify-content-between w-screen h-3rem px-2 relative shadow-2">
-  <i class="pi pi-angle-left text-2xl cursor-pointer" (click)="onBackClick()"></i>
-  <div class="title text-2xl">{{ title }}</div>
-  <div class="actions inline-flex">
-    <i class="pi pi-map text-2xl cursor-pointer" (click)="onMapClick()"></i>
+<hexschool-f2e-header *ngIf="showHeader()">
+  <div class="header-actions">
+    <i class="pi pi-angle-left text-2xl cursor-pointer" [style.visibility]="showBack() === true ? 'visible' : 'hidden'" (click)="onBackClick()"></i>
   </div>
-</header>
+  <div class="header-sub-actions">
+    &nbsp;
+    <i class="pi pi-cog text-2xl cursor-pointer" *ngIf="showSetting() === true" (click)="onCitySettingClick()"></i>
+    <i class="pi pi-map text-2xl cursor-pointer" *ngIf="showMap() === true" (click)="onMapClick()"></i>
+  </div>
+</hexschool-f2e-header>
 
-<div class="content">
+<div class="content" [style.height]="showHeader() === true ? 'calc(100vh - 3rem)' : '100vh'">
   <router-outlet></router-outlet>
 </div>
 

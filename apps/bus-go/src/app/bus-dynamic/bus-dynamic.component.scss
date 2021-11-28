@@ -1,0 +1,27 @@
+.route-list,
+.bubble-list {
+  height: calc(100vh - 3rem - 1rem - 8rem - 1rem);
+  overflow: auto;
+}
+.bubble-list {
+  margin-top: 8px;
+  overflow: hidden;
+}
+.empty-field {
+  height: calc(1rem + 8rem);
+}
+
+.route-stop,
+.bubble {
+  box-sizing: border-box;
+  height: 36px;
+}
+.bubble {
+  width: 36px;
+  margin: 0 auto;
+  border-radius: 18px;
+  &.active {
+    background: linear-gradient(47.23deg, #79401c 35.47%, #b5886c 87.12%);
+    // background-color: linear-gradient(47.23deg, #79401c, #b5886c);
+  }
+}

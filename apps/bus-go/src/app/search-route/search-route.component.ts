@@ -35,22 +35,12 @@ export class SearchRouteComponent implements OnInit {
       return;
     }
     this.tdxService.searchBusRoute(this.city, keyword).subscribe(res => {
-      console.info(res);
       this.routes = res;
-      // this.stops = [];
-      // res.forEach(route => {
-      //   const routeStop = route.Stops.find(stop => stop.StopName.Zh_tw && stop.StopName.Zh_tw.indexOf(keyword) > -1);
-      //   if (routeStop) {
-      //     const existStop = this.stops.find(stop => stop.StopID === routeStop.StationID);
-      //     if (existStop) {
-      //       existStop.Routes.push(route.RouteName.Zh_tw || '');
-      //     } else {
-      //       const newStop = new StopWithRoute(routeStop.StationID || '', routeStop.StopName.Zh_tw ? routeStop.StopName.Zh_tw : '', '', [route.RouteName.Zh_tw || '']);
-      //       this.stops.push(newStop);
-      //     }
-      //   }
-      // });
     });
+  }
+
+  onRouteClick(route: BusRoute): void {
+    this.router.navigate(['bus-dynamic', route.RouteName.Zh_tw]);
   }
 
 }
