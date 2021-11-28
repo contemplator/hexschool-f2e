@@ -4,6 +4,8 @@
 
 `建議使用手機載具操作`
 
+[作品觀看連結](https://contemplator.github.io/hexschool-f2e-bus/#/index)
+
 第一次進入頁面時會需要使用者設定預設的位置，之後的查詢動作都與此相關。
 
 之後若要修改縣市地區，可以在進入後的右上角點選齒輪的圖示重新進行地區的選擇。
@@ -43,11 +45,17 @@ angular.json - angular 專案配置檔案
 bus-go 專案請見 /apps/bus-go 資料夾
 
 /apps/bus-go/src 原始碼
+
 /apps/bus-go/src/app 主要介面及邏輯程式
+
 /apps/bus-go/src/assets 靜態檔案
+
 /libs/data 關於靜態資料，如縣市資料透過 API 取得後放置於此
+
 /libs/util 關於 service 相關功能，負責處理資料面的工具都放置於此
+
 /libs/ui 關於介面常用的元件及工具，介面工具都放置於此
+
 /libs/viewmodels 關於物件描述都放置於此，如介面資料呈現的物件以及 API Service 取得的資料物件格式
 
 ## 使用技術
