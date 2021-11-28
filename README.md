@@ -1,109 +1,62 @@
+# Bus Go - 全台公車動態時刻查詢應用服務
+
+## 作品說明
+
+`建議使用手機載具操作`
+
+第一次進入頁面時會需要使用者設定預設的位置，之後的查詢動作都與此相關。
+
+之後若要修改縣市地區，可以在進入後的右上角點選齒輪的圖示重新進行地區的選擇。
+
+公車查詢方式提供兩個途徑：
+
+1. 查詢站點
+2. 查詢路線
+
+### 查詢站點
+
+首先需要輸入站點名稱關鍵字查詢，查詢後會將結果以清單的方式陳列在畫面下方，除了顯示站點名稱外，也會顯示經過該站點的公車路線。
+
+### 查詢路線
+
+首先需要輸入路線名稱關鍵字查詢，查詢後會將結果以清單的方式陳列在畫面下方，除了顯示路線名稱外，也會顯示起迄站名。
+
+點選其中一條路線，會進入到顯示路線詳細資料的頁面，主要是提供該公車路線的動態資訊，顯示每一個站點預估到站時間。
+
+點擊路線資訊卡右下角的翻轉圖示，將會切換路線方向。
+
+點擊右上角的地圖圖示，將會顯示 Google Map 畫面，並且把站點標注在地圖上。
+
+## 系統說明
+
+專案運行方式請見 package.json 檔案。
+
+使用 npm install 安裝依賴套件
+
+使用 ng serve bus-go 運行公車動態時刻查詢的服務
 
 
-# HexschoolF2e
+## 資料夾說明
 
-This project was generated using [Nx](https://nx.dev).
+angular.json - angular 專案配置檔案
 
-<p style="text-align: center;"><img src="https://raw.githubusercontent.com/nrwl/nx/master/images/nx-logo.png" width="450"></p>
+bus-go 專案請見 /apps/bus-go 資料夾
 
-🔎 **Smart, Extensible Build Framework**
+/apps/bus-go/src 原始碼
+/apps/bus-go/src/app 主要介面及邏輯程式
+/apps/bus-go/src/assets 靜態檔案
+/libs/data 關於靜態資料，如縣市資料透過 API 取得後放置於此
+/libs/util 關於 service 相關功能，負責處理資料面的工具都放置於此
+/libs/ui 關於介面常用的元件及工具，介面工具都放置於此
+/libs/viewmodels 關於物件描述都放置於此，如介面資料呈現的物件以及 API Service 取得的資料物件格式
 
-## Quick Start & Documentation
+## 使用技術
 
-[Nx Documentation](https://nx.dev/angular)
+- Angular
+- Nx
+- Agm (Angular Google Map)
 
-[10-minute video showing all Nx features](https://nx.dev/getting-started/intro)
-
-[Interactive Tutorial](https://nx.dev/tutorial/01-create-application)
-
-## Adding capabilities to your workspace
-
-Nx supports many plugins which add capabilities for developing different types of applications and different tools.
-
-These capabilities include generating applications, libraries, etc as well as the devtools to test, and build projects as well.
-
-Below are our core plugins:
-
-- [Angular](https://angular.io)
-  - `ng add @nrwl/angular`
-- [React](https://reactjs.org)
-  - `ng add @nrwl/react`
-- Web (no framework frontends)
-  - `ng add @nrwl/web`
-- [Nest](https://nestjs.com)
-  - `ng add @nrwl/nest`
-- [Express](https://expressjs.com)
-  - `ng add @nrwl/express`
-- [Node](https://nodejs.org)
-  - `ng add @nrwl/node`
-
-There are also many [community plugins](https://nx.dev/community) you could add.
-
-## Generate an application
-
-Run `ng g @nrwl/angular:app my-app` to generate an application.
-
-> You can use any of the plugins above to generate applications as well.
-
-When using Nx, you can create multiple applications and libraries in the same workspace.
-
-## Generate a library
-
-Run `ng g @nrwl/angular:lib my-lib` to generate a library.
-
-> You can also use any of the plugins above to generate libraries as well.
-
-Libraries are shareable across libraries and applications. They can be imported from `@hexschool-f2e/mylib`.
-
-## Development server
-
-Run `ng serve my-app` for a dev server. Navigate to http://localhost:4200/. The app will automatically reload if you change any of the source files.
-
-## Code scaffolding
-
-Run `ng g component my-component --project=my-app` to generate a new component.
-
-## Build
-
-Run `ng build my-app` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test my-app` to execute the unit tests via [Jest](https://jestjs.io).
-
-Run `nx affected:test` to execute the unit tests affected by a change.
-
-## Running end-to-end tests
-
-Run `ng e2e my-app` to execute the end-to-end tests via [Cypress](https://www.cypress.io).
-
-Run `nx affected:e2e` to execute the end-to-end tests affected by a change.
-
-## Understand your workspace
-
-Run `nx dep-graph` to see a diagram of the dependencies of your projects.
-
-## Further help
-
-Visit the [Nx Documentation](https://nx.dev/angular) to learn more.
-
-
-
-
-
-
-## ☁ Nx Cloud
-
-### Distributed Computation Caching & Distributed Task Execution
-
-<p style="text-align: center;"><img src="https://raw.githubusercontent.com/nrwl/nx/master/images/nx-cloud-card.png"></p>
-
-Nx Cloud pairs with Nx in order to enable you to build and test code more rapidly, by up to 10 times. Even teams that are new to Nx can connect to Nx Cloud and start saving time instantly.
-
-Teams using Nx gain the advantage of building full-stack applications with their preferred framework alongside Nx’s advanced code generation and project dependency graph, plus a unified experience for both frontend and backend developers.
-
-Visit [Nx Cloud](https://nx.app/) to learn more.
-
+---
 # Ubike Travel
 
 ## 使用技術
